@@ -50,11 +50,13 @@
     const suffix = el.getAttribute('data-suffix') || '';
     const duration = 2000;
     const startTime = performance.now();
+    // Cache wrap before animation starts — innerHTML replaces el on frame 1,
+    // making el detached. Caching here keeps the reference valid every frame.
+    const wrap = el.closest('.stat-num-wrap');
 
     function step(now) {
       const progress = Math.min((now - startTime) / duration, 1);
       const current = Math.round(easeOutQuad(progress) * target);
-      const wrap = el.closest('.stat-num-wrap');
       const html = current + '<span class="stat-suf-val">' + suffix + '</span>';
       if (wrap) wrap.innerHTML = html;
       else el.textContent = current;
