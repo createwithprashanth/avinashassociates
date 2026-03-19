@@ -21,6 +21,7 @@
 }
 
 @media (max-width: 768px) {
+  html { scroll-padding-top: 64px; }
   .top-bar { display: none; }
   .navbar { top: 0; height: 64px; }
   .nav-links, .btn-consultation { display: none; }
@@ -72,8 +73,15 @@
   .footer-bottom-row { grid-template-columns: 1fr; text-align: center; }
   .ft-legal { justify-content: center; }
   .float-wa-btn { width: 52px; height: 52px; }
-  .float-wa-wrap { bottom: 16px; right: 16px; }
-  .scroll-top-btn { bottom: 16px; left: 16px; width: 44px; height: 44px; }
+  .float-wa-wrap {
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 8px));
+    right: max(16px, calc(env(safe-area-inset-right) + 8px));
+  }
+  .scroll-top-btn {
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 8px));
+    left: max(16px, calc(env(safe-area-inset-left) + 8px));
+    width: 44px; height: 44px;
+  }
   .sec-heading, .about-heading, .why-heading { font-size: var(--txt-3xl); }
   /* Overlay adjusts to mobile navbar height (64px, no top-bar) */
   .tco-overlay { top: 64px; }
@@ -135,8 +143,16 @@
   .section-wrap { padding: 0 16px; }
   .section-hdr { margin-bottom: 40px; }
   .float-wa-btn { width: 48px; height: 48px; }
-  .float-wa-wrap { bottom: 14px; right: 14px; gap: 8px; }
-  .scroll-top-btn { bottom: 14px; left: 14px; width: 40px; height: 40px; }
+  .float-wa-wrap {
+    bottom: max(14px, calc(env(safe-area-inset-bottom) + 6px));
+    right: max(14px, calc(env(safe-area-inset-right) + 6px));
+    gap: 8px;
+  }
+  .scroll-top-btn {
+    bottom: max(14px, calc(env(safe-area-inset-bottom) + 6px));
+    left: max(14px, calc(env(safe-area-inset-left) + 6px));
+    width: 40px; height: 40px;
+  }
   .services-section, .why-section, .about-section,
   .process-section, .testi-section, .contact-section { padding: 56px 0; }
 }

@@ -5,13 +5,15 @@
 
 /* ── RESET ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html { scroll-behavior: smooth; scroll-padding-top: 108px; }
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--off-white);
   color: var(--text-body);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
 }
 img { max-width: 100%; height: auto; display: block; }
 ul  { list-style: none; }

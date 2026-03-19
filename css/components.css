@@ -394,7 +394,10 @@
 
 /* ── FLOATING BUTTONS ────────────────────────────────────── */
 .float-wa-wrap {
-  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  position: fixed;
+  bottom: max(28px, calc(env(safe-area-inset-bottom) + 12px));
+  right: max(28px, calc(env(safe-area-inset-right) + 12px));
+  z-index: 999;
   display: flex; align-items: center; gap: 12px;
 }
 .float-wa-tooltip {
@@ -427,7 +430,10 @@
 .float-wa-btn:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,.55); }
 
 .scroll-top-btn {
-  position: fixed; bottom: 28px; left: 28px; z-index: 999;
+  position: fixed;
+  bottom: max(28px, calc(env(safe-area-inset-bottom) + 12px));
+  left: max(28px, calc(env(safe-area-inset-left) + 12px));
+  z-index: 999;
   width: 48px; height: 48px; border-radius: 50%;
   background: var(--primary);
   color: white; display: flex; align-items: center; justify-content: center;

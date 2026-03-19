@@ -5,7 +5,10 @@
 
 /* ── HERO ─────────────────────────────────────────────────── */
 .hero-section {
-  position: relative; min-height: 100vh; min-height: 700px;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: max(700px, 100svh);
   display: flex; align-items: center; overflow: hidden;
   padding-top: 108px;
 }
