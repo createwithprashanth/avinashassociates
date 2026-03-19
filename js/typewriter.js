@@ -10,10 +10,12 @@
   if (!el) return;
 
   const phrases = [
-    'GST Filing & Returns',
+    'ITR Filing',
+    'GST Returns',
     'Company Registration',
     'NRI Taxation',
     'Audit & Assurance',
+    'ROC Compliance',
     'Trademark Filing',
     'Business Advisory'
   ];
