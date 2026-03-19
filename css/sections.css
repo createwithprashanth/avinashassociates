@@ -321,6 +321,27 @@
 }
 .about-para { font-size: 16.5px; color: var(--text-body); line-height: 1.82; margin-bottom: 16px; }
 
+/* CA India badge — About section */
+.ca-india-badge {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--white);
+  border: 1.5px solid var(--border-card);
+  border-radius: var(--r-lg);
+  padding: 14px 20px;
+  margin-bottom: 28px;
+  width: fit-content;
+}
+.ca-india-logo { display: block; flex-shrink: 0; object-fit: contain; }
+.ca-india-text { display: flex; flex-direction: column; gap: 3px; }
+.ca-india-label {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--accent);
+}
+.ca-india-body {
+  font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 600;
+  color: var(--text-heading); line-height: 1.4;
+}
+
 .cred-list { margin-top: 32px; display: flex; flex-direction: column; gap: 13px; }
 .cred-item {
   display: flex; align-items: center; gap: 12px;

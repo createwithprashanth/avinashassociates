@@ -355,6 +355,22 @@
 .ft-firm-type { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--accent-bright); margin-bottom: 16px; letter-spacing: .04em; }
 .ft-tagline { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 14.5px; color: rgba(255,255,255,.45); margin-bottom: 12px; }
 .ft-desc { font-family: 'Inter', sans-serif; font-size: 13.5px; color: rgba(255,255,255,.4); line-height: 1.72; max-width: 280px; margin-bottom: 28px; }
+/* CA India badge — Footer */
+.ft-ca-india {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  width: fit-content;
+}
+.ft-ca-india-logo { display: block; flex-shrink: 0; object-fit: contain; border-radius: 4px; }
+.ft-ca-india-text {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,.55); line-height: 1.5;
+}
+
 .ft-socials { display: flex; gap: 12px; }
 .ft-social {
   width: 40px; height: 40px; border-radius: 50%;
