@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Tax Calculator FY 2025–26 | Avinash &amp; Associates</title>
+  <meta name="description" content="Free Income Tax Calculator for FY 2025-26. Compute tax under New Regime & Old Regime instantly. Covers salary, capital gains, business income and more.">
+
+  <!-- Fonts (same as main site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Shared design tokens -->
+  <link rel="stylesheet" href="css/variables.css">
+  <!-- Calculator-specific styles -->
+  <link rel="stylesheet" href="tax-calculator.css">
+</head>
+<body class="tc-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="tc-header" id="tc-header">
+    <div class="tc-header-inner">
+      <a href="index.html" class="tc-logo" aria-label="Avinash &amp; Associates — Back to home">
+        <span class="tc-logo-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="10" fill="#2563EB"/>
+            <path d="M10 28L20 10L30 28" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 22H26" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="tc-logo-text">
+          <span class="tc-logo-name">Avinash &amp; Associates</span>
+          <span class="tc-logo-tag">Chartered Accountants</span>
+        </span>
+      </a>
+      <div class="tc-header-actions">
+        <a href="tel:+919100130773" class="tc-hdr-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.09 12a19.79 19.79 0 0 1-3-8.57A2 2 0 0 1 3 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 91 00 130 773
+        </a>
+        <a href="https://wa.me/919100130773" target="_blank" rel="noopener" class="tc-hdr-link tc-hdr-wa">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="index.html" class="tc-back-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Main Website
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <div class="tc-hero">
+    <div class="tc-hero-inner">
+      <div class="tc-hero-badges">
+        <span class="tc-hbadge">Free Tool</span>
+        <span class="tc-hbadge tc-hbadge-outline">FY 2025–26 &nbsp;·&nbsp; AY 2026–27</span>
+        <span class="tc-hbadge tc-hbadge-outline">No Sign-up</span>
+      </div>
+      <h1 class="tc-hero-title">Income Tax Calculator</h1>
+      <p class="tc-hero-sub">New Regime &amp; Old Regime · Salary · Capital Gains · Business · Instant Results</p>
+    </div>
+    <div class="tc-hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 56" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 56L60 48.7C120 42 240 28 360 21C480 14 600 14 720 21C840 28 960 42 1080 45.5C1200 49 1320 42 1380 38.5L1440 35V56H1380C1320 56 1200 56 1080 56C960 56 840 56 720 56C600 56 480 56 360 56C240 56 120 56 60 56H0Z" fill="#f5f7ff"/></svg>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="tc-main" id="main-content">
+
+    <!-- Main Tab Row -->
+    <div class="tc-tabs-bar">
+      <div class="tc-tabs-inner">
+        <button class="tc-mtab active" data-tab="individual" aria-controls="tcp-individual" role="tab" aria-selected="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Individual / Salaried
+        </button>
+        <button class="tc-mtab" data-tab="business" aria-controls="tcp-business" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9" y1="14.5" x2="15" y2="14.5"/></svg>
+          Business / Corporate
+        </button>
+      </div>
+    </div>
+
+    <!-- ─── INDIVIDUAL PANEL ─────────────────────────────────── -->
+    <div class="tc-panel" id="tcp-individual" role="tabpanel">
+      <div class="tc-layout">
+
+        <!-- FORM COLUMN -->
+        <div class="tc-form-col">
+
+          <!-- Reset bar -->
+          <div class="tc-reset-bar">
+            <span>FY 2025–26 &nbsp;·&nbsp; Fill in your details for an instant tax estimate</span>
+            <button class="tc-reset-btn" id="ind-reset-btn" type="button">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-5"/></svg>
+              Reset
+            </button>
+          </div>
+
+          <!-- ── Group 1: Income Sources ── -->
+          <div class="tc-group">
+            <div class="tc-ghd">
+              <span class="tc-gicon tc-gicon-blue">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </span>
+              <span class="tc-gtitle">Income Sources</span>
+              <span class="tc-gnote">Annual figures (₹)</span>
+            </div>
+            <div class="tc-gbody">
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-salary">Salary / Pension
+                    <span class="tc-hint">Gross annual CTC or total pension received</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-salary" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-rent">Rental Income
+                    <span class="tc-hint">Net annual rent — 30% std. deduction auto-applied (Old Regime)</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-rent" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+              </div>
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-business">Business / Freelance Profit
+                    <span class="tc-hint">Net profit from business, profession or freelancing</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-business" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-other">Other Sources
+                    <span class="tc-hint">Interest income, dividends, winnings, gifts, etc.</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-other" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+              </div>
+
+              <div class="tc-subsec">
+                <span class="tc-subsec-icon" aria-hidden="true">📈</span>
+                Capital Gains
+                <span class="tc-subsec-note">Separate tax rates apply — not clubbed with slab income</span>
+              </div>
+
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-stcg">STCG — Listed Equity &amp; MF
+                    <span class="tc-hint">Short-term capital gains taxed @ <strong>20%</strong> (Sec 111A, Budget 2024)</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-stcg" placeholder="0" min="0" inputmode="numeric">
+                    <span class="tc-rate-tag">20%</span></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-ltcg">LTCG — Listed Equity &amp; MF
+                    <span class="tc-hint">₹1.25L exempt per year; gains above taxed @ <strong>12.5%</strong> (Sec 112A)</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-ltcg" placeholder="0" min="0" inputmode="numeric">
+                    <span class="tc-rate-tag tc-rate-green">12.5%</span></div>
+                </div>
+              </div>
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-ltcg-prop">LTCG — Property / Debt / Others
+                    <span class="tc-hint">Taxed @ <strong>20%</strong> without indexation (post 23 Jul 2024, Sec 112)</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-ltcg-prop" placeholder="0" min="0" inputmode="numeric">
+                    <span class="tc-rate-tag">20%</span></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-stcg-other">STCG — Other Assets
+                    <span class="tc-hint">Debt MF, property held &lt;24 months — taxed at <strong>slab rate</strong></span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-stcg-other" placeholder="0" min="0" inputmode="numeric">
+                    <span class="tc-rate-tag tc-rate-gray">Slab</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Group 2: Tax Regime & Age ── -->
+          <div class="tc-group">
+            <div class="tc-ghd">
+              <span class="tc-gicon tc-gicon-violet">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="17" y2="18"/><circle cx="17" cy="6" r="2.5"/><circle cx="17" cy="12" r="2.5"/><circle cx="20" cy="18" r="2.5"/></svg>
+              </span>
+              <span class="tc-gtitle">Tax Regime &amp; Profile</span>
+            </div>
+            <div class="tc-gbody">
+              <div class="tc-field tc-field-full">
+                <label class="tc-lbl">Select Tax Regime for FY 2025–26</label>
+                <div class="tc-regime-pair">
+                  <button class="tc-rbtn active" data-regime="new" type="button">
+                    <span class="tc-rbtn-top">
+                      <strong>New Regime</strong>
+                      <span class="tc-rbtn-badge tc-rbtn-badge-green">Default</span>
+                    </span>
+                    <span class="tc-rbtn-desc">Lower slab rates starting from 0% up to 30%. Zero tax up to ₹12L (with 87A rebate). Minimal deductions — ideal for most salaried individuals.</span>
+                    <span class="tc-rbtn-slabs">0% · 5% · 10% · 15% · 20% · 25% · 30%</span>
+                  </button>
+                  <button class="tc-rbtn" data-regime="old" type="button">
+                    <span class="tc-rbtn-top">
+                      <strong>Old Regime</strong>
+                      <span class="tc-rbtn-badge">Optional</span>
+                    </span>
+                    <span class="tc-rbtn-desc">Higher slab rates but full deductions — 80C, HRA, home loan interest, NPS and more. Best if your total deductions exceed ₹3–4L.</span>
+                    <span class="tc-rbtn-slabs">0% · 5% · 20% · 30%</span>
+                  </button>
+                </div>
+              </div>
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-age">Age Group
+                    <span class="tc-hint">Affects basic exemption limit in Old Regime</span>
+                  </label>
+                  <select class="tc-sel" id="i-age">
+                    <option value="general">Below 60 years</option>
+                    <option value="senior">Senior Citizen (60–80 years)</option>
+                    <option value="supersenior">Super Senior (80+ years)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Group 3: Deductions (Old Regime only) ── -->
+          <div class="tc-group tc-deductions-grp" id="tc-ded-grp" style="display:none">
+            <div class="tc-ghd">
+              <span class="tc-gicon tc-gicon-gold">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <span class="tc-gtitle">Deductions &amp; Exemptions</span>
+              <span class="tc-old-chip">Old Regime Only</span>
+            </div>
+            <div class="tc-gbody">
+              <div class="tc-info-banner">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Standard deduction of <strong>₹50,000</strong> is automatically applied for salaried individuals. Enter only your additional deductions below.
+              </div>
+
+              <div class="tc-ded-section-title">Chapter VI-A Deductions</div>
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-80c">Section 80C
+                    <span class="tc-cap-tag">Max ₹1,50,000</span>
+                    <span class="tc-hint">PPF, ELSS, LIC premium, NSC, home loan principal, tuition fees, 5-yr FD</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-80c" placeholder="0" min="0" max="150000" inputmode="numeric"></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-nps">Section 80CCD(1B) — NPS
+                    <span class="tc-cap-tag">Max ₹50,000</span>
+                    <span class="tc-hint">Additional NPS Tier-1 contribution (over and above 80C)</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-nps" placeholder="0" min="0" max="50000" inputmode="numeric"></div>
+                </div>
+              </div>
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-80d-self">80D — Health Insurance (Self &amp; Family)
+                    <span class="tc-cap-tag">Max ₹25,000 / ₹50,000 (Senior)</span>
+                    <span class="tc-hint">Premium for self, spouse &amp; dependent children. ₹50K cap if you are a senior citizen.</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-80d-self" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-80d-par">80D — Health Insurance (Parents)
+                    <span class="tc-cap-tag">Max ₹25,000 / ₹50,000 (Senior Parents)</span>
+                    <span class="tc-hint">Premium for dependent parents. ₹50K cap if parents are senior citizens.</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-80d-par" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+              </div>
+
+              <div class="tc-ded-section-title">Salary &amp; Property Deductions</div>
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-hra">HRA Exemption
+                    <span class="tc-hint">Enter the actual exempt HRA amount (minimum of actual HRA, 40%/50% of basic, and rent − 10% of basic)</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-hra" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-homeloan">Home Loan Interest — Sec 24(b)
+                    <span class="tc-cap-tag">Max ₹2,00,000</span>
+                    <span class="tc-hint">Interest paid on home loan for self-occupied property</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-homeloan" placeholder="0" min="0" max="200000" inputmode="numeric"></div>
+                </div>
+              </div>
+
+              <div class="tc-ded-section-title">Other Deductions</div>
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-80e">Section 80E — Education Loan Interest
+                    <span class="tc-hint">Interest on loan for higher education (no upper limit)</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-80e" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-other-ded">Other Deductions (80G, LTA, Prof. Tax…)
+                    <span class="tc-hint">Donations u/s 80G, Leave Travel Allowance, professional tax paid, etc.</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-other-ded" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /form-col -->
+
+        <!-- RESULTS COLUMN -->
+        <div class="tc-result-col">
+          <div class="tc-rcard" id="tc-ind-card">
+
+            <!-- Empty state -->
+            <div class="tc-empty" id="tc-ind-empty">
+              <div class="tc-empty-icon" aria-hidden="true">
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <p>Fill in your income details on the left — your complete tax breakdown will appear here <strong>instantly</strong>.</p>
+              <div class="tc-empty-tips">
+                <div class="tc-empty-tip">✓ New &amp; Old Regime comparison</div>
+                <div class="tc-empty-tip">✓ Capital gains tax computed separately</div>
+                <div class="tc-empty-tip">✓ Surcharge &amp; cess included</div>
+                <div class="tc-empty-tip">✓ Monthly take-home estimate</div>
+              </div>
+            </div>
+
+            <!-- Result body -->
+            <div class="tc-rbody" id="tc-ind-body" style="display:none">
+
+              <!-- Gauge -->
+              <div class="tc-gauge-section">
+                <div class="tc-gauge-wrap">
+                  <svg class="tc-gauge-svg" viewBox="0 0 160 160" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="ind-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#2563EB"/>
+                        <stop offset="100%" stop-color="#06b6d4"/>
+                      </linearGradient>
+                    </defs>
+                    <circle class="tc-gauge-track" cx="80" cy="80" r="64"/>
+                    <circle class="tc-gauge-ring" cx="80" cy="80" r="64" id="ind-gauge-ring" stroke="url(#ind-grad)"/>
+                  </svg>
+                  <div class="tc-gauge-ctr">
+                    <span class="tc-gauge-pct" id="ind-eff-rate">—</span>
+                    <span class="tc-gauge-sub">Effective Rate</span>
+                  </div>
+                </div>
+                <div class="tc-gauge-meta">
+                  <div class="tc-gm-row">
+                    <span class="tc-gm-label">Gross Income</span>
+                    <span class="tc-gm-val" id="ind-gross">₹0</span>
+                  </div>
+                  <div class="tc-gm-row">
+                    <span class="tc-gm-label">Total Tax Payable</span>
+                    <span class="tc-gm-val tc-gm-tax" id="ind-total-tax">₹0</span>
+                  </div>
+                  <div class="tc-gm-row">
+                    <span class="tc-gm-label">Monthly Take-Home</span>
+                    <span class="tc-gm-val tc-gm-green" id="ind-monthly">₹0</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Breakdown -->
+              <div class="tc-section-title">Tax Breakdown</div>
+              <div class="tc-breakdown" id="ind-breakdown"></div>
+
+              <!-- Regime comparison -->
+              <div class="tc-comp-section" id="ind-comparison"></div>
+
+              <!-- Disclaimer + CTA -->
+              <div class="tc-result-footer">
+                <p class="tc-disclaimer-sm">* Estimate based on standard FY 2025-26 rates. Actual tax may vary. Consult a CA for precise computation.</p>
+                <a href="index.html#contact" class="tc-cta-btn">
+                  File with Our CA — Expert &amp; Accurate
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+
+            </div><!-- /rbody -->
+          </div><!-- /rcard -->
+        </div><!-- /result-col -->
+
+      </div><!-- /layout -->
+    </div><!-- /individual panel -->
+
+    <!-- ─── BUSINESS PANEL ──────────────────────────────────── -->
+    <div class="tc-panel" id="tcp-business" role="tabpanel" style="display:none">
+      <div class="tc-layout">
+
+        <!-- BUSINESS FORM COLUMN -->
+        <div class="tc-form-col">
+
+          <div class="tc-reset-bar">
+            <span>FY 2025–26 &nbsp;·&nbsp; Enter your business financials</span>
+            <button class="tc-reset-btn" id="biz-reset-btn" type="button">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-5"/></svg>
+              Reset
+            </button>
+          </div>
+
+          <!-- Group 1: Entity & Financials -->
+          <div class="tc-group">
+            <div class="tc-ghd">
+              <span class="tc-gicon tc-gicon-blue">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              </span>
+              <span class="tc-gtitle">Business Details</span>
+            </div>
+            <div class="tc-gbody">
+              <div class="tc-field tc-field-full">
+                <label class="tc-lbl" for="b-entity">Entity / Business Type</label>
+                <select class="tc-sel" id="b-entity">
+                  <option value="pvt">Private Limited Company / OPC (Domestic)</option>
+                  <option value="pvt-new">New Manufacturing Company (Section 115BAB — 15%)</option>
+                  <option value="llp">LLP — Limited Liability Partnership (30%)</option>
+                  <option value="partner">Partnership Firm (30%)</option>
+                  <option value="proprietor">Proprietorship / Sole Trader (Individual Slab Rates)</option>
+                </select>
+              </div>
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="b-turnover">Annual Turnover / Revenue
+                    <span class="tc-hint">Total gross revenue for FY 2025-26 (determines 25% vs 30% for Pvt Ltd)</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="b-turnover" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="b-profit">Net Profit Before Tax (PBT)
+                    <span class="tc-hint">Profit after all allowable business expenses, before tax</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="b-profit" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Group 2: Tax Options (Companies only) -->
+          <div class="tc-group" id="tc-biz-regime-grp">
+            <div class="tc-ghd">
+              <span class="tc-gicon tc-gicon-violet">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+              </span>
+              <span class="tc-gtitle">Tax Regime (Companies)</span>
+            </div>
+            <div class="tc-gbody">
+              <div class="tc-regime-cards-grid">
+                <label class="tc-rcard-opt">
+                  <input type="radio" name="b-regime" value="standard" checked>
+                  <div class="tc-rco-body">
+                    <strong>Standard Regime</strong>
+                    <span>25% (turnover ≤ ₹400 Cr) or 30%</span>
+                    <span class="tc-rco-note">All exemptions &amp; deductions apply. MAT @ 15% as applicable.</span>
+                  </div>
+                </label>
+                <label class="tc-rcard-opt">
+                  <input type="radio" name="b-regime" value="115baa">
+                  <div class="tc-rco-body">
+                    <strong>Section 115BAA</strong>
+                    <span>22% flat rate (no exemptions)</span>
+                    <span class="tc-rco-note">No MAT. Opt once, irrevocable. Best for profitable companies.</span>
+                  </div>
+                </label>
+              </div>
+              <div class="tc-llp-notice" id="tc-llp-notice" style="display:none">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                LLP and Partnership Firms are taxed at a <strong>flat 30%</strong> on their total income. Surcharge of 12% applies if income exceeds ₹1 Crore. Section 115BAA applies to companies only.
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /form-col -->
+
+        <!-- BUSINESS RESULTS -->
+        <div class="tc-result-col">
+          <div class="tc-rcard" id="tc-biz-card">
+
+            <div class="tc-empty" id="tc-biz-empty">
+              <div class="tc-empty-icon" aria-hidden="true">
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <p>Enter your business profit above to compute your <strong>corporate tax liability</strong> and advance tax schedule instantly.</p>
+              <div class="tc-empty-tips">
+                <div class="tc-empty-tip">✓ Base tax at applicable flat rate</div>
+                <div class="tc-empty-tip">✓ Surcharge &amp; cess included</div>
+                <div class="tc-empty-tip">✓ Profit After Tax (PAT)</div>
+                <div class="tc-empty-tip">✓ Advance tax installment schedule</div>
+              </div>
+            </div>
+
+            <!-- Proprietor redirect -->
+            <div class="tc-prop-notice" id="tc-prop-notice" style="display:none">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <h3>Use Individual Tab</h3>
+              <p>Proprietorships are taxed at individual slab rates — not at a corporate flat rate. Switch to the <strong>Individual / Salaried</strong> tab and enter your business profit under <em>"Business / Freelance Profit"</em> to compute your tax.</p>
+              <button class="tc-switch-btn" data-tab="individual" type="button">Switch to Individual Tab →</button>
+            </div>
+
+            <div class="tc-rbody" id="tc-biz-body" style="display:none">
+
+              <div class="tc-gauge-section">
+                <div class="tc-gauge-wrap">
+                  <svg class="tc-gauge-svg" viewBox="0 0 160 160" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="biz-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#D97706"/>
+                        <stop offset="100%" stop-color="#f59e0b"/>
+                      </linearGradient>
+                    </defs>
+                    <circle class="tc-gauge-track" cx="80" cy="80" r="64"/>
+                    <circle class="tc-gauge-ring" cx="80" cy="80" r="64" id="biz-gauge-ring" stroke="url(#biz-grad)"/>
+                  </svg>
+                  <div class="tc-gauge-ctr">
+                    <span class="tc-gauge-pct" id="biz-eff-rate">—</span>
+                    <span class="tc-gauge-sub">Effective Rate</span>
+                  </div>
+                </div>
+                <div class="tc-gauge-meta">
+                  <div class="tc-gm-row">
+                    <span class="tc-gm-label">Net Profit (PBT)</span>
+                    <span class="tc-gm-val" id="biz-profit-disp">₹0</span>
+                  </div>
+                  <div class="tc-gm-row">
+                    <span class="tc-gm-label">Total Tax Liability</span>
+                    <span class="tc-gm-val tc-gm-tax" id="biz-total-tax">₹0</span>
+                  </div>
+                  <div class="tc-gm-row">
+                    <span class="tc-gm-label">Profit After Tax (PAT)</span>
+                    <span class="tc-gm-val tc-gm-green" id="biz-pat">₹0</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tc-section-title">Tax Breakdown</div>
+              <div class="tc-breakdown" id="biz-breakdown"></div>
+
+              <div class="tc-section-title">Advance Tax Schedule — FY 2025–26</div>
+              <div class="tc-adv-grid" id="biz-adv-grid"></div>
+
+              <div class="tc-result-footer">
+                <p class="tc-disclaimer-sm">* Based on standard corporate tax rates for FY 2025-26. Actual liability may differ based on MAT, specific exemptions and judicial interpretations.</p>
+                <a href="index.html#contact" class="tc-cta-btn">
+                  Get CA for Your Business
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div><!-- /result-col -->
+
+      </div>
+    </div><!-- /business panel -->
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="tc-footer">
+    <div class="tc-footer-inner">
+      <div class="tc-footer-left">
+        <a href="index.html" class="tc-footer-logo">Avinash &amp; Associates</a>
+        <p>Chartered Accountants &amp; Tax Consultants &nbsp;·&nbsp; Punjagutta, Hyderabad</p>
+      </div>
+      <div class="tc-footer-right">
+        <p class="tc-footer-disc">This calculator provides estimates for general informational purposes only, based on standard rates for FY 2025-26 (AY 2026-27). Results may differ from actual tax liability due to specific facts, applicable exemptions, surcharge variations, and judicial interpretations. Always consult a qualified Chartered Accountant for final tax computation and filing.</p>
+        <p>&copy; 2025 Avinash &amp; Associates. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/tax-engine.js"></script>
+  <script src="js/tax-ui.js"></script>
+
+</body>
+</html>

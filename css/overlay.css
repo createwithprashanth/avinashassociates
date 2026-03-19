@@ -1,0 +1,28 @@
+/* ============================================================
+   AVINASH & ASSOCIATES — css/overlay.css
+   Tax Calculator Overlay (iframe slide-up panel)
+   ============================================================ */
+
+.tco-overlay {
+  position: fixed;
+  top: 108px; /* below top-bar (36px) + navbar (72px) — adjusted dynamically by JS */
+  left: 0; right: 0; bottom: 0;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  background: var(--off-white, #FAFAF7);
+  transform: translateY(100%);
+  transition: transform .42s cubic-bezier(.4, 0, .2, 1);
+  will-change: transform;
+}
+.tco-overlay.open {
+  transform: translateY(0);
+}
+
+/* The iframe fills full overlay height */
+.tco-frame {
+  flex: 1;
+  border: none;
+  width: 100%;
+  display: block;
+}

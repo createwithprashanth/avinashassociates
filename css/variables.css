@@ -1,0 +1,83 @@
+/* ============================================================
+   AVINASH & ASSOCIATES — css/variables.css
+   Design Tokens: Colors, Gradients, Shadows, Radii, Typography
+   ============================================================ */
+
+:root {
+  /* Core Brand — Emerald */
+  --primary:        #064E3B;   /* deep forest emerald */
+  --primary-dark:   #022C22;   /* darkest emerald — hero */
+  --primary-mid:    #065F46;   /* mid emerald */
+  --accent:         #059669;   /* vibrant emerald */
+  --accent-hover:   #047857;   /* darker emerald hover */
+  --accent-bright:  #10B981;   /* bright mint — highlights */
+
+  /* Gold System */
+  --gold:           #D97706;
+  --gold-light:     #F59E0B;
+  --gold-pale:      #FFFBEB;
+  --gold-vivid:     #FBBF24;
+
+  /* Warm Neutrals */
+  --white:          #FFFFFF;
+  --off-white:      #FAFAF7;   /* warm off-white */
+  --cream:          #FDF8F0;   /* very warm cream bg */
+  --light-bg:       #F0FDF4;   /* soft green tint */
+  --border:         #D1FAE5;   /* soft green border */
+  --border-mid:     #A7F3D0;
+  --border-hover:   #6EE7B7;
+
+  /* Text */
+  --text-heading:   #0F172A;
+  --text-body:      #374151;
+  --text-muted:     #9CA3AF;
+  --text-white:     #F8FAFC;
+
+  /* Semantic */
+  --success:        #059669;
+  --whatsapp:       #25D366;
+  --error:          #DC2626;
+
+  /* Service icon colors (per-service) */
+  --icon-1: #7C3AED;  /* violet — company reg */
+  --icon-2: #DC2626;  /* red — income tax */
+  --icon-3: #0891B2;  /* cyan — GST */
+  --icon-4: #D97706;  /* amber — audit */
+  --icon-5: #059669;  /* emerald — ROC */
+  --icon-6: #DB2777;  /* pink — trademark */
+  --icon-7: #2563EB;  /* blue — NRI */
+  --icon-8: #EA580C;  /* orange — advisory */
+
+  /* Gradients */
+  --grad-hero:  linear-gradient(135deg, #022C22 0%, #064E3B 55%, #065F46 100%);
+  --grad-green: linear-gradient(135deg, #064E3B, #059669);
+  --grad-gold:  linear-gradient(135deg, #D97706, #F59E0B);
+  --grad-card:  linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+  --grad-emerald-soft: linear-gradient(135deg, rgba(6,78,59,.07), rgba(16,185,129,.04));
+
+  /* Shadows — emerald-tinted */
+  --shadow-sm:    0 1px 3px rgba(6,78,59,.08), 0 1px 2px rgba(6,78,59,.06);
+  --shadow-md:    0 4px 16px rgba(6,78,59,.10), 0 2px 6px rgba(6,78,59,.06);
+  --shadow-lg:    0 10px 40px rgba(6,78,59,.12), 0 4px 12px rgba(6,78,59,.08);
+  --shadow-xl:    0 20px 60px rgba(6,78,59,.15), 0 8px 20px rgba(6,78,59,.10);
+  --shadow-green: 0 8px 30px rgba(5,150,105,.30);
+  --shadow-gold:  0 8px 30px rgba(217,119,6,.28);
+
+  /* UI Neutrals — inactive states, borders, dividers */
+  --bg-subtle:      #F1F5F9;   /* inactive step / chip bg */
+  --border-ui:      #E2E8F0;   /* standard UI element border */
+  --border-card:    #E0F2EF;   /* greenish card border */
+  --border-faq:     #EEF2F7;   /* FAQ item divider */
+  --text-subtle:    #94A3B8;   /* inactive label / step text */
+
+  /* Radii */
+  --r-sm:   4px;  --r-md:   8px;  --r-lg:  12px;
+  --r-xl:  16px;  --r-2xl: 24px;  --r-3xl: 32px;
+  --r-full: 9999px;
+
+  /* Type Scale */
+  --txt-xs:  .75rem;  --txt-sm:  .875rem; --txt-base: 1rem;
+  --txt-lg:  1.125rem; --txt-xl: 1.25rem;  --txt-2xl: 1.5rem;
+  --txt-3xl: 1.875rem; --txt-4xl: 2.25rem; --txt-5xl: 3rem;
+  --txt-6xl: 3.75rem;
+}

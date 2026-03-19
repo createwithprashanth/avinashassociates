@@ -1,0 +1,125 @@
+/* ============================================================
+   AVINASH & ASSOCIATES — css/base.css
+   Reset, Keyframes, Utility classes, Scroll Reveal
+   ============================================================ */
+
+/* ── RESET ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--off-white);
+  color: var(--text-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+ul  { list-style: none; }
+a   { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+
+::selection { background: rgba(5,150,105,.15); color: var(--text-heading); }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--off-white) inset;
+  -webkit-text-fill-color: var(--text-heading);
+}
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.skip-link {
+  position: absolute; top: -100px; left: 20px; z-index: 9999;
+  background: var(--accent); color: white;
+  padding: 8px 16px; border-radius: var(--r-md); font-weight: 600;
+  transition: top .2s;
+}
+.skip-link:focus { top: 20px; }
+
+/* ── KEYFRAMES ───────────────────────────────────────────── */
+@keyframes fadeUp      { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn      { from{opacity:0} to{opacity:1} }
+@keyframes slideInRight{ from{opacity:0;transform:translateX(52px)} to{opacity:1;transform:translateX(0)} }
+@keyframes slideInLeft { from{opacity:0;transform:translateX(-52px)} to{opacity:1;transform:translateX(0)} }
+@keyframes scaleIn     { from{opacity:0;transform:scale(.92)} to{opacity:1;transform:scale(1)} }
+@keyframes bounce      { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes marquee     { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes shake       { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)} 40%{transform:translateX(8px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
+@keyframes ripple      { from{transform:scale(1);opacity:.5} to{transform:scale(1.65);opacity:0} }
+@keyframes spin        { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes preloaderP  { from{width:0} to{width:100%} }
+@keyframes preloaderFO { from{opacity:1} to{opacity:0} }
+@keyframes blobDrift1  { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(28px,-18px) scale(1.06)} }
+@keyframes blobDrift2  { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-28px,18px) scale(1.09)} }
+@keyframes blobPulse   { 0%,100%{transform:scale(1);opacity:.25} 50%{transform:scale(1.14);opacity:.45} }
+@keyframes dotPulse    { 0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)} 70%{box-shadow:0 0 0 8px rgba(37,211,102,0)} }
+@keyframes wheelScroll { 0%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(9px)} }
+@keyframes lineGrow    { from{width:0} to{width:76%} }
+@keyframes float       { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes shimmer     { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+
+/* ── UTILITY ─────────────────────────────────────────────── */
+.section-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+.section-hdr { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+
+.eyebrow {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: .7rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.sec-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: var(--txt-4xl);
+  color: var(--text-heading);
+  line-height: 1.18;
+  margin-bottom: 16px;
+}
+
+.sec-subtext {
+  font-size: var(--txt-lg);
+  color: var(--text-body);
+  line-height: 1.72;
+  margin-bottom: 24px;
+}
+
+.gold-line {
+  width: 52px; height: 3px;
+  background: var(--grad-gold);
+  border-radius: var(--r-full);
+  margin: 0 auto;
+}
+
+/* ── SCROLL REVEAL ───────────────────────────────────────── */
+.scroll-reveal, .scroll-reveal-card, .scroll-slide-left,
+.scroll-slide-right, .scroll-reveal-feat, .scroll-reveal-step {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: .65s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
+.scroll-reveal      { transform: translateY(32px); }
+.scroll-reveal-card { transform: translateY(32px); }
+.scroll-slide-left  { transform: translateX(-52px); }
+.scroll-slide-right { transform: translateX(52px); }
+.scroll-reveal-feat { transform: translateX(28px); }
+.scroll-reveal-step { transform: translateY(24px); }
+
+.scroll-reveal.is-visible, .scroll-reveal-card.is-visible,
+.scroll-slide-left.is-visible, .scroll-slide-right.is-visible,
+.scroll-reveal-feat.is-visible, .scroll-reveal-step.is-visible {
+  opacity: 1; transform: none;
+}

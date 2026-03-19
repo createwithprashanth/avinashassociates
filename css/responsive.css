@@ -1,0 +1,177 @@
+/* ============================================================
+   AVINASH & ASSOCIATES — css/responsive.css
+   Breakpoints: 1024px, 768px, 480px, 375px
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .testi-grid { grid-template-columns: 1fr; gap: 16px; }
+  .testi-featured { order: -1; }
+  .services-bento { grid-template-columns: repeat(2, 1fr); }
+  .svc-lg-card { grid-column: span 2; min-height: 190px; }
+  .p-icon-3d { width: 80px; height: 80px; }
+  .p-icon-3d svg { width: 80px; height: 80px; }
+  .p-card { padding: 28px 16px 24px; gap: 10px; }
+  .p-title { font-size: 14px; }
+  .p-arrow { width: 28px; }
+  .p-arrow svg { width: 24px; height: 24px; }
+  .why-container, .about-container { gap: 48px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-bottom-row { grid-template-columns: 1fr; text-align: center; }
+  .ft-legal { justify-content: center; }
+}
+
+@media (max-width: 768px) {
+  .top-bar { display: none; }
+  .navbar { top: 0; height: 64px; }
+  .nav-links, .btn-consultation { display: none; }
+  .hamburger { display: flex; }
+  .nav-inner { padding: 0 20px; }
+  .hero-section { padding-top: 64px; }
+  .hero-container { grid-template-columns: 1fr; padding: 48px 20px 80px; gap: 40px; text-align: center; }
+  .hero-badges { justify-content: center; }
+  .hero-subtext { max-width: none; }
+  .hero-heading { font-size: clamp(2rem, 7vw, 2.8rem); }
+  .hero-ctas { justify-content: center; }
+  .hero-proof { justify-content: center; }
+  .hero-right { order: 2; }
+  .hero-left { order: 1; }
+  .marquee-track { animation-duration: 18s; }
+  .section-wrap { padding: 0 20px; }
+  .services-section, .why-section, .about-section,
+  .process-section, .testi-section, .contact-section { padding: 64px 0; }
+  .services-bento { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .svc-lg-card { grid-column: span 2; min-height: 170px; padding: 28px 24px; }
+  .slg-name { font-size: 22px; }
+  .slg-illus { width: 100px; height: 100px; }
+  .slg-illus svg { width: 100px; height: 100px; }
+  .stats-strip { padding: 52px 20px; }
+  .stats-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .stats-vdivider { display: none; }
+  .stat-num-wrap { font-size: 44px; }
+  .stat-suf-val { font-size: 24px; }
+  .mobile-nav-link { font-size: 24px; }
+  .why-container, .about-container { grid-template-columns: 1fr; padding: 0 20px; gap: 40px; }
+  .why-illus { max-width: 320px; margin: 0 auto; }
+  .fc-avail { top: 8px; right: -8px; }
+  .fc-rating { bottom: -8px; left: -8px; }
+  .why-heading, .about-heading { font-size: var(--txt-3xl); }
+  .process-timeline { flex-direction: column; align-items: stretch; gap: 16px; padding: 0 20px; }
+  .process-step { flex-direction: column; align-items: stretch; }
+  .p-arrow { width: 100%; justify-content: center; transform: rotate(90deg); margin: -4px 0; }
+  .p-card { flex-direction: row; text-align: left; padding: 24px 20px; gap: 16px; }
+  .p-icon-3d { width: 72px; height: 72px; flex-shrink: 0; }
+  .p-icon-3d svg { width: 72px; height: 72px; }
+  .p-desc { max-width: none; margin: 0; }
+  .testi-grid { grid-template-columns: 1fr; gap: 16px; }
+  .testi-featured { order: -1; }
+  .testi-deco-q { font-size: 200px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-section .section-wrap { padding: 0 20px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
+  .footer-divider, .footer-bottom-row { margin: 0; padding: 0 20px; }
+  .footer-bottom-row { grid-template-columns: 1fr; text-align: center; }
+  .ft-legal { justify-content: center; }
+  .float-wa-btn { width: 52px; height: 52px; }
+  .float-wa-wrap { bottom: 16px; right: 16px; }
+  .scroll-top-btn { bottom: 16px; left: 16px; width: 44px; height: 44px; }
+  .sec-heading, .about-heading, .why-heading { font-size: var(--txt-3xl); }
+  /* Overlay adjusts to mobile navbar height (64px, no top-bar) */
+  .tco-overlay { top: 64px; }
+}
+
+@media (max-width: 480px) {
+  .hero-container { padding: 36px 16px 64px; gap: 32px; }
+  .hero-heading { font-size: clamp(1.75rem, 8vw, 2.4rem); }
+  .hero-subtext { font-size: 15px; }
+  .hero-badge { font-size: 11px; padding: 4px 10px; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .btn-hero-gold, .btn-hero-outline { width: 100%; justify-content: center; }
+  .hero-card { padding: 20px 16px; }
+  .hero-svc-card { min-height: 140px; }
+  .hero-svc-illus { width: 110px; }
+  .hero-svc-name { font-size: 15px; }
+  .hero-svc-desc { font-size: 12px; }
+  .marquee-track { animation-duration: 14s; }
+  .services-bento { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .svc-lg-card { grid-column: span 2; flex-direction: column; text-align: center;
+                 min-height: unset; padding: 24px 16px 20px; gap: 12px; }
+  .slg-content { align-items: center; }
+  .slg-name { font-size: 19px; }
+  .slg-desc { font-size: 12.5px; max-width: none; text-align: center; }
+  .slg-illus { width: 80px; height: 80px; }
+  .slg-illus svg { width: 80px; height: 80px; }
+  .svc-sm-card { padding: 20px 12px 18px; gap: 6px; }
+  .ssm-icon { width: 56px; height: 56px; border-radius: 14px; }
+  .ssm-name { font-size: 12.5px; }
+  .ssm-tag { font-size: 10.5px; }
+  .stats-strip { padding: 48px 16px; }
+  .stats-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .stat-num-wrap { font-size: 40px; }
+  .stat-suf-val { font-size: 22px; }
+  .stat-lbl { font-size: 12.5px; }
+  .why-container, .about-container { gap: 28px; }
+  .fc-avail { top: 8px; right: 0; }
+  .fc-rating { bottom: -8px; left: 0; }
+  .about-exp-badge { bottom: -10px; right: -10px; }
+  .why-heading, .about-heading { font-size: clamp(1.5rem, 6vw, 1.875rem); }
+  .process-timeline { gap: 12px; }
+  .p-card { padding: 20px 16px; gap: 12px; }
+  .p-icon-3d { width: 60px; height: 60px; }
+  .p-icon-3d svg { width: 60px; height: 60px; }
+  .p-title { font-size: 14px; }
+  .p-desc { font-size: 12.5px; }
+  .p-label { font-size: 9px; }
+  .testi-card { padding: 24px 18px 20px; gap: 16px; }
+  .testi-avatar { width: 44px; height: 44px; font-size: 14px; }
+  .testi-name { font-size: 13.5px; }
+  .testi-quote { font-size: 14px; line-height: 1.75; }
+  .testi-deco-q { font-size: 160px; top: -20px; }
+  .testi-rating-row { flex-wrap: wrap; }
+  .contact-grid { gap: 28px; }
+  .contact-info-h { font-size: 20px; }
+  .footer-grid { gap: 28px; }
+  .footer-bottom-row { padding: 0 16px; }
+  .sec-heading { font-size: clamp(1.5rem, 6vw, 1.875rem); }
+  .section-wrap { padding: 0 16px; }
+  .section-hdr { margin-bottom: 40px; }
+  .float-wa-btn { width: 48px; height: 48px; }
+  .float-wa-wrap { bottom: 14px; right: 14px; gap: 8px; }
+  .scroll-top-btn { bottom: 14px; left: 14px; width: 40px; height: 40px; }
+  .services-section, .why-section, .about-section,
+  .process-section, .testi-section, .contact-section { padding: 56px 0; }
+}
+
+/* ── 375px and below (iPhone SE, small phones) ── */
+@media (max-width: 375px) {
+  .section-wrap { padding: 0 12px; }
+  .contact-section .section-wrap { padding: 0 12px; }
+  .hero-container { padding: 28px 12px 56px; }
+  .hero-heading { font-size: clamp(1.6rem, 9vw, 2rem); }
+  .hero-badge { font-size: 10.5px; padding: 3px 9px; }
+  .hero-proof { flex-direction: column; gap: 8px; text-align: center; }
+  .services-bento { grid-template-columns: 1fr; gap: 10px; }
+  .svc-lg-card { grid-column: span 1; }
+  .svc-sm-card { flex-direction: row; text-align: left; padding: 16px 14px; gap: 12px; }
+  .ssm-icon { flex-shrink: 0; margin-bottom: 0; }
+  .ssm-badge { display: none; }
+  .stats-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .stat-num-wrap { font-size: 34px; }
+  .stat-suf-val { font-size: 18px; }
+  .p-card { flex-direction: column; text-align: center; padding: 18px 14px; }
+  .p-icon-3d { width: 56px; height: 56px; margin: 0 auto; }
+  .p-icon-3d svg { width: 56px; height: 56px; }
+  .p-content { text-align: center; }
+  .p-desc { text-align: center; }
+  .testi-card { padding: 20px 14px; }
+  .testi-top { gap: 10px; }
+  .testi-avatar { width: 40px; height: 40px; font-size: 13px; }
+  .testi-quote { font-size: 13.5px; }
+  .sec-heading { font-size: clamp(1.35rem, 7vw, 1.65rem); }
+  .why-heading, .about-heading { font-size: clamp(1.35rem, 7vw, 1.65rem); }
+  .eyebrow { font-size: 9.5px; }
+  .footer-grid { padding: 0 12px; gap: 24px; }
+  .footer-divider, .footer-bottom-row { padding: 0 12px; }
+  .mobile-nav-link { font-size: 22px; }
+  .services-section, .why-section, .about-section,
+  .process-section, .testi-section, .contact-section { padding: 48px 0; }
+}

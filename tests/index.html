@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Suite — Avinash &amp; Associates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design tokens (mirrors css/variables.css) ────────── */
+    :root {
+      --emerald:    #059669;
+      --emerald-dk: #047857;
+      --gold:       #D97706;
+      --gold-lt:    #FCD34D;
+      --bg:         #F8FAFC;
+      --surface:    #FFFFFF;
+      --border:     #E2E8F0;
+      --text:       #1E293B;
+      --text-muted: #64748B;
+      --pass:       #059669;
+      --fail:       #DC2626;
+      --skip:       #D97706;
+      --radius:     10px;
+      --shadow:     0 2px 12px rgba(0,0,0,.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ──────────────────────────────────────────── */
+    .t-header {
+      background: var(--emerald);
+      color: #fff;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      box-shadow: 0 2px 8px rgba(5,150,105,.3);
+    }
+    .t-header-brand {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: .02em;
+    }
+    .t-header-sub { font-size: .8rem; opacity: .85; margin-top: 2px; }
+
+    /* ── Layout ──────────────────────────────────────────── */
+    .t-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    /* ── Sidebar ─────────────────────────────────────────── */
+    .t-sidebar {
+      position: sticky;
+      top: 1.5rem;
+    }
+    .t-summary-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.5rem;
+      border-top: 4px solid var(--emerald);
+      margin-bottom: 1rem;
+    }
+    .t-summary-title {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .t-stat { display: flex; justify-content: space-between; align-items: center; margin-bottom: .5rem; }
+    .t-stat-label { font-size: .875rem; color: var(--text-muted); }
+    .t-stat-value { font-size: 1.25rem; font-weight: 700; }
+    .t-stat-value.pass { color: var(--pass); }
+    .t-stat-value.fail { color: var(--fail); }
+    .t-stat-value.total { color: var(--text); }
+
+    .t-progress { margin-top: 1rem; }
+    .t-progress-bar {
+      height: 8px;
+      border-radius: 99px;
+      background: var(--border);
+      overflow: hidden;
+    }
+    .t-progress-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: var(--emerald);
+      transition: width .5s ease;
+      width: 0%;
+    }
+    .t-progress-fill.has-fail { background: var(--fail); }
+    .t-progress-label { font-size: .75rem; color: var(--text-muted); margin-top: .4rem; }
+
+    .t-run-btn {
+      display: block;
+      width: 100%;
+      padding: .75rem;
+      background: var(--emerald);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: background .2s;
+      margin-top: .75rem;
+    }
+    .t-run-btn:hover { background: var(--emerald-dk); }
+    .t-run-btn:disabled { opacity: .6; cursor: not-allowed; }
+
+    .t-suite-nav { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem; }
+    .t-suite-nav-title { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-bottom: .6rem; }
+    .t-nav-item { display: flex; align-items: center; gap: .5rem; padding: .35rem .5rem; border-radius: 6px; cursor: pointer; font-size: .8rem; margin-bottom: 2px; transition: background .15s; }
+    .t-nav-item:hover { background: var(--bg); }
+    .t-nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+    .t-nav-dot.pass { background: var(--pass); }
+    .t-nav-dot.fail { background: var(--fail); }
+    .t-nav-label { flex: 1; }
+
+    /* ── Main results ────────────────────────────────────── */
+    .t-main { min-width: 0; }
+
+    .t-suite {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .t-suite-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .85rem 1.25rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+    .t-suite-header:hover { background: #F1F5F9; }
+    .t-suite-name {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .t-suite-badge {
+      font-size: .7rem;
+      padding: .15rem .5rem;
+      border-radius: 99px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+    }
+    .t-suite-badge.pass { background: #D1FAE5; color: var(--pass); }
+    .t-suite-badge.fail { background: #FEE2E2; color: var(--fail); }
+    .t-suite-badge.pending { background: #FEF3C7; color: var(--skip); }
+    .t-suite-chevron { color: var(--text-muted); font-size: .8rem; transition: transform .2s; }
+    .t-suite.collapsed .t-suite-chevron { transform: rotate(-90deg); }
+    .t-suite.collapsed .t-tests { display: none; }
+
+    .t-tests { padding: .5rem 0; }
+    .t-test {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      padding: .45rem 1.25rem;
+      font-size: .83rem;
+      border-left: 3px solid transparent;
+    }
+    .t-test:hover { background: var(--bg); }
+    .t-test.pass { border-left-color: var(--pass); }
+    .t-test.fail { border-left-color: var(--fail); }
+    .t-test-icon { font-size: .9rem; flex-shrink: 0; margin-top: 1px; }
+    .t-test-body { flex: 1; }
+    .t-test-label { color: var(--text); }
+    .t-test.fail .t-test-label { font-weight: 600; }
+    .t-test-error {
+      margin-top: .3rem;
+      font-family: monospace;
+      font-size: .78rem;
+      color: var(--fail);
+      background: #FFF5F5;
+      border-radius: 4px;
+      padding: .3rem .5rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .t-test-ms { font-size: .72rem; color: var(--text-muted); flex-shrink: 0; align-self: center; }
+
+    /* ── States ──────────────────────────────────────────── */
+    .t-idle {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+    }
+    .t-idle-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .t-idle-title { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text); margin-bottom: .5rem; }
+    .t-idle-sub { font-size: .875rem; }
+
+    .t-spinner {
+      width: 32px; height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--emerald);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Hidden iframe for DOM tests ─────────────────────── */
+    #tcTestFrame {
+      position: fixed;
+      left: -9999px;
+      top: -9999px;
+      width: 1024px;
+      height: 768px;
+      border: none;
+      pointer-events: none;
+    }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    .t-footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: .75rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .t-wrap { grid-template-columns: 1fr; }
+      .t-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="t-header">
+  <div>
+    <div class="t-header-brand">Avinash &amp; Associates</div>
+    <div class="t-header-sub">Automated Test Suite</div>
+  </div>
+  <div id="tHeaderStatus" style="font-size:.85rem;opacity:.9">Ready</div>
+</header>
+
+<div class="t-wrap">
+  <!-- Sidebar -->
+  <aside class="t-sidebar">
+    <div class="t-summary-card">
+      <div class="t-summary-title">Results</div>
+      <div class="t-stat">
+        <span class="t-stat-label">Passed</span>
+        <span class="t-stat-value pass" id="statPass">—</span>
+      </div>
+      <div class="t-stat">
+        <span class="t-stat-label">Failed</span>
+        <span class="t-stat-value fail" id="statFail">—</span>
+      </div>
+      <div class="t-stat">
+        <span class="t-stat-label">Total</span>
+        <span class="t-stat-value total" id="statTotal">—</span>
+      </div>
+      <div class="t-progress">
+        <div class="t-progress-bar"><div class="t-progress-fill" id="progressFill"></div></div>
+        <div class="t-progress-label" id="progressLabel"></div>
+      </div>
+      <button class="t-run-btn" id="runBtn" onclick="runAll()">▶ Run All Tests</button>
+    </div>
+
+    <div class="t-suite-nav">
+      <div class="t-suite-nav-title">Suites</div>
+      <div id="suiteNav"></div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="t-main">
+    <div id="results">
+      <div class="t-idle">
+        <div class="t-idle-icon">🧪</div>
+        <div class="t-idle-title">Test Suite Ready</div>
+        <div class="t-idle-sub">Click <strong>Run All Tests</strong> to execute the test suite.</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="t-footer">
+  Avinash &amp; Associates — Internal Test Suite &nbsp;·&nbsp; FY 2025-26
+</footer>
+
+<!-- Hidden iframe for DOM/UI tests -->
+<iframe id="tcTestFrame" src="../tax-calculator.html" title="Tax Calculator Test Frame"></iframe>
+
+<!-- Load tax engine so unit tests can call functions directly -->
+<script src="../js/tax-engine.js"></script>
+
+<!-- Test framework -->
+<script src="runner.js"></script>
+
+<!-- Test files -->
+<script src="tax-engine.test.js"></script>
+<script src="tax-ui.test.js"></script>
+
+<!-- UI runner -->
+<script>
+'use strict';
+
+const resultsEl   = document.getElementById('results');
+const statPass    = document.getElementById('statPass');
+const statFail    = document.getElementById('statFail');
+const statTotal   = document.getElementById('statTotal');
+const progressFill = document.getElementById('progressFill');
+const progressLabel = document.getElementById('progressLabel');
+const runBtn      = document.getElementById('runBtn');
+const suiteNav    = document.getElementById('suiteNav');
+const headerStatus = document.getElementById('tHeaderStatus');
+
+function icon(passed) { return passed ? '✅' : '❌'; }
+
+function renderResults({ results, totalPass, totalFail, total }) {
+  /* Sidebar stats */
+  statPass.textContent  = totalPass;
+  statFail.textContent  = totalFail;
+  statTotal.textContent = total;
+
+  const pct = total > 0 ? Math.round(totalPass / total * 100) : 0;
+  progressFill.style.width = pct + '%';
+  progressFill.classList.toggle('has-fail', totalFail > 0);
+  progressLabel.textContent = `${pct}% passing`;
+
+  headerStatus.textContent = totalFail === 0
+    ? `✅ All ${total} tests passed`
+    : `❌ ${totalFail} of ${total} failed`;
+
+  /* Suite nav */
+  suiteNav.innerHTML = results.map((suite, i) => {
+    const hasFail = suite.tests.some(t => !t.passed);
+    return `<div class="t-nav-item" onclick="scrollToSuite(${i})">
+      <div class="t-nav-dot ${hasFail ? 'fail' : 'pass'}"></div>
+      <div class="t-nav-label">${suite.label}</div>
+    </div>`;
+  }).join('');
+
+  /* Main results */
+  resultsEl.innerHTML = results.map((suite, i) => {
+    const suiteFail  = suite.tests.filter(t => !t.passed).length;
+    const suitePass  = suite.tests.filter(t => t.passed).length;
+    const badgeClass = suiteFail > 0 ? 'fail' : 'pass';
+    const badgeText  = suiteFail > 0 ? `${suiteFail} failed` : `${suitePass} passed`;
+
+    const testsHtml = suite.tests.map(t => `
+      <div class="t-test ${t.passed ? 'pass' : 'fail'}">
+        <div class="t-test-icon">${icon(t.passed)}</div>
+        <div class="t-test-body">
+          <div class="t-test-label">${t.label}</div>
+          ${!t.passed && t.error ? `<div class="t-test-error">${escHtml(t.error.message || String(t.error))}</div>` : ''}
+        </div>
+        <div class="t-test-ms">${t.ms}ms</div>
+      </div>`).join('');
+
+    return `<div class="t-suite" id="suite-${i}">
+      <div class="t-suite-header" onclick="toggleSuite(${i})">
+        <div class="t-suite-name">
+          <span>${suite.label}</span>
+          <span class="t-suite-badge ${badgeClass}">${badgeText}</span>
+        </div>
+        <span class="t-suite-chevron">▼</span>
+      </div>
+      <div class="t-tests">${testsHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function toggleSuite(i) {
+  document.getElementById(`suite-${i}`).classList.toggle('collapsed');
+}
+
+function scrollToSuite(i) {
+  const el = document.getElementById(`suite-${i}`);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+async function runAll() {
+  runBtn.disabled = true;
+  runBtn.textContent = '⏳ Running…';
+  headerStatus.textContent = 'Running tests…';
+
+  resultsEl.innerHTML = `<div class="t-idle">
+    <div class="t-spinner"></div>
+    <div class="t-idle-title">Running tests…</div>
+    <div class="t-idle-sub">Please wait while all suites execute.</div>
+  </div>`;
+
+  await new Promise(r => setTimeout(r, 30)); // let browser paint
+
+  const report = await Runner.run();
+  renderResults(report);
+
+  runBtn.disabled = false;
+  runBtn.textContent = '↺ Run Again';
+}
+</script>
+</body>
+</html>
