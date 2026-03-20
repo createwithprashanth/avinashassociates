@@ -168,7 +168,7 @@
   background: rgba(255,255,255,.97);
   backdrop-filter: blur(24px);
   border-radius: var(--r-2xl);
-  padding: 36px 36px 32px;
+  padding: 0;               /* edge-to-edge carousel, label gets own padding */
   box-shadow: var(--shadow-xl);
   border: 1px solid rgba(255,255,255,.9);
   position: relative; z-index: 1;
@@ -178,28 +178,29 @@
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 4px;
   background: var(--grad-gold);
+  z-index: 2;
 }
 .hero-card-label {
   font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
   letter-spacing: .13em; text-transform: uppercase; color: var(--text-muted);
-  margin-bottom: 24px;
+  padding: 28px 28px 16px;
+  margin-bottom: 0;
 }
 /* ── HERO SERVICE CAROUSEL ───────────────────────────────── */
 .hero-carousel {
-  border-radius: var(--r-lg);
-  margin-bottom: 4px;
+  margin-bottom: 0;
   overflow: hidden;
 }
 .hero-carousel-track {
   position: relative;
 }
 .hero-svc-card {
-  display: none;          /* hidden by default — JS shows active card */
+  display: none;
   align-items: stretch;
   width: 100%;
-  min-height: 160px;
-  border-radius: var(--r-lg);
-  border: 1.5px solid var(--border);
+  min-height: 210px;
+  border: none;             /* no inner box */
+  border-radius: 0;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -216,15 +217,18 @@
 .hero-svc-illus {
   position: relative;
   flex-shrink: 0;
-  width: 130px;
-  background: linear-gradient(145deg, #ECFDF5 0%, #D1FAE5 100%);
+  width: 44%;               /* wider illustration */
+  background: linear-gradient(145deg, #ECFDF5 0%, #C6F4E0 100%);
   display: flex; align-items: center; justify-content: center;
-  padding: 12px 8px;
+  padding: 16px 12px;
 }
 .hero-svc-svg {
-  width: 100%; max-width: 110px;
+  width: 100%;
   height: auto; display: block;
   object-fit: contain;
+  max-height: 190px;
+  /* brand green tint */
+  filter: sepia(.7) hue-rotate(100deg) saturate(2.8) brightness(.94);
 }
 .hero-svc-emoji {
   position: absolute;
@@ -241,19 +245,19 @@
 .hero-svc-info {
   flex: 1; min-width: 0;
   background: var(--white);
-  padding: 20px 18px 18px 20px;
+  padding: 24px 22px 22px 24px;
   display: flex; flex-direction: column; justify-content: center;
-  gap: 6px;
+  gap: 8px;
 }
 .hero-svc-name {
   font-family: 'Raleway', sans-serif;
-  font-weight: 800; font-size: 17px;
+  font-weight: 800; font-size: 18px;
   color: var(--primary); line-height: 1.25;
 }
 .hero-svc-desc {
   font-family: 'Inter', sans-serif;
-  font-size: 12.5px; color: var(--text-body);
-  line-height: 1.6;
+  font-size: 13px; color: var(--text-body);
+  line-height: 1.65;
 }
 .hero-svc-tag {
   display: inline-block; align-self: flex-start;
@@ -272,7 +276,8 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin-top: 14px;
+  padding: 14px 0 16px;
+  margin-top: 0;
 }
 .hero-carousel-dot {
   width: 6px; height: 6px;
@@ -285,11 +290,12 @@
   background: var(--accent);
   width: 20px;
 }
-.hero-card-sep { height: 1px; background: var(--border); margin: 20px 0; }
+.hero-card-sep { height: 1px; background: var(--border); margin: 0 24px; }
 .hero-card-cta {
   display: block; text-align: center;
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px;
   color: var(--accent); transition: color .2s;
+  padding: 16px 24px 22px;
 }
 .hero-card-cta:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
 
