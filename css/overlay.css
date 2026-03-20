@@ -25,4 +25,5 @@
   border: none;
   width: 100%;
   display: block;
+  background: var(--off-white, #FAFAF7); /* prevent bleed-through */
 }

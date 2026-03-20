@@ -113,7 +113,7 @@
 .tc-hero-wave svg { width: 100%; display: block; }
 
 /* ── MAIN ──────────────────────────────────────────────────── */
-.tc-main { flex: 1; padding-bottom: 60px; }
+.tc-main { flex: 1; padding-top: 24px; padding-bottom: 60px; }
 
 /* Tabs bar */
 .tc-tabs-bar {

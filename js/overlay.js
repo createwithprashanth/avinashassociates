@@ -22,11 +22,16 @@
     overlay.style.top = (tbH + navH) + 'px';
   }
 
+  let savedScrollY = 0;
+
   function openOverlay() {
     if (!loaded) {
       frame.src = 'tax-calculator.html?embed=1';
       loaded = true;
     }
+    /* Scroll main page to top so hero never peeks behind overlay */
+    savedScrollY = window.scrollY;
+    window.scrollTo({ top: 0, behavior: 'instant' });
     updateOverlayTop();
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
@@ -38,6 +43,8 @@
     overlay.classList.remove('open');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    /* Restore previous scroll position */
+    window.scrollTo({ top: savedScrollY, behavior: 'instant' });
   }
 
   /* Open when any link pointing to tax-calculator.html is clicked */
