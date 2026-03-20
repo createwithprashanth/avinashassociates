@@ -9,8 +9,12 @@
   min-height: 100vh;
   min-height: 100svh;
   min-height: max(700px, 100svh);
-  display: flex; align-items: center; overflow: hidden;
+  display: flex; align-items: center;
+  overflow: hidden;
+  contain: layout paint;   /* hard clip — nothing bleeds outside */
   padding-top: 108px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hero-bg {
@@ -317,7 +321,11 @@
 .marquee-strip {
   height: 52px;
   background: var(--grad-green);
-  overflow: hidden; display: flex; align-items: center;
+  overflow: hidden;
+  overflow-x: clip;
+  display: flex; align-items: center;
+  width: 100%;
+  max-width: 100%;
 }
 .marquee-track {
   display: flex;

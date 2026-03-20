@@ -5,17 +5,30 @@
 
 /* ── RESET ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 108px; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 108px;
+  overflow-x: hidden;        /* prevent horizontal scroll on iOS */
+  max-width: 100%;
+}
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--off-white);
   color: var(--text-body);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
 }
 img { max-width: 100%; height: auto; display: block; }
+
+/* Prevent any section from causing horizontal overflow */
+section, header, footer, main, nav {
+  max-width: 100%;
+  overflow-x: clip;
+}
 ul  { list-style: none; }
 a   { text-decoration: none; color: inherit; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
@@ -115,9 +128,9 @@ input:-webkit-autofill:focus {
 }
 .scroll-reveal      { transform: translateY(32px); }
 .scroll-reveal-card { transform: translateY(32px); }
-.scroll-slide-left  { transform: translateX(-52px); }
-.scroll-slide-right { transform: translateX(52px); }
-.scroll-reveal-feat { transform: translateX(28px); }
+.scroll-slide-left  { transform: translateX(-32px); }
+.scroll-slide-right { transform: translateX(32px); }
+.scroll-reveal-feat { transform: translateX(20px); }
 .scroll-reveal-step { transform: translateY(24px); }
 
 .scroll-reveal.is-visible, .scroll-reveal-card.is-visible,
