@@ -25,5 +25,5 @@
   width: 100%;
   display: block;
   background: #FAFAF7;
-  margin-top: 108px; /* navbar (72px) + top-bar (36px) — updated by JS if needed */
+  /* margin-top set dynamically by JS to match actual navbar height */
 }

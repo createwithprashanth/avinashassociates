@@ -13,13 +13,13 @@
 
   let loaded = false;
 
-  /* Position overlay below the visible header */
+  /* Push iframe below the fixed navbar (overlay itself is full-screen) */
   function updateOverlayTop() {
     const navbar = document.querySelector('.navbar');
     const topBar = document.querySelector('.top-bar');
     const navH   = navbar ? navbar.getBoundingClientRect().height : 72;
     const tbH    = topBar ? topBar.getBoundingClientRect().height : 0;
-    overlay.style.top = (tbH + navH) + 'px';
+    frame.style.marginTop = (tbH + navH) + 'px';
   }
 
   let savedScrollY = 0;
