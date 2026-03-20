@@ -222,8 +222,9 @@
   padding: 12px 8px;
 }
 .hero-svc-svg {
-  width: 100%; max-width: 96px;
+  width: 100%; max-width: 110px;
   height: auto; display: block;
+  object-fit: contain;
 }
 .hero-svc-emoji {
   position: absolute;
