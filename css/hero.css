@@ -227,8 +227,6 @@
   height: auto; display: block;
   object-fit: contain;
   max-height: 190px;
-  /* brand green tint */
-  filter: sepia(.7) hue-rotate(100deg) saturate(2.8) brightness(.94);
 }
 .hero-svc-emoji {
   position: absolute;
