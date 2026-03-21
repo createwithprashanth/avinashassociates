@@ -35,6 +35,7 @@
     updateOverlayTop();
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     document.body.classList.add('tco-open');
     setTimeout(() => closeBtn && closeBtn.focus(), 60);
@@ -43,6 +44,7 @@
   function closeOverlay() {
     overlay.classList.remove('open');
     overlay.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     /* Restore previous scroll position */
     window.scrollTo({ top: savedScrollY, behavior: 'instant' });
