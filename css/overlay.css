@@ -18,8 +18,10 @@
   transform: translateY(0);
 }
 
-/* Force navbar into its solid "scrolled" state while overlay is open.
-   CSS specificity ensures this overrides the JS class toggle. */
+/* Lock background scroll while overlay is open */
+body.tco-open { overflow: hidden; }
+
+/* Force navbar into its solid "scrolled" state while overlay is open */
 body.tco-open .navbar {
   background: rgba(255,255,255,.97);
   backdrop-filter: blur(24px) saturate(180%);
