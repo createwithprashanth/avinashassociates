@@ -28,13 +28,15 @@ const OLD_REGIME_SLABS = {
 
 /* ── DEDUCTION LIMITS ────────────────────────────────────────── */
 const LIMITS = {
-  STD_DED_NEW:    75000,   /* Standard deduction — New Regime */
+  STD_DED_NEW:    75000,   /* Standard deduction — New Regime (salary/pension only) */
   STD_DED_OLD:    50000,   /* Standard deduction — Old Regime (salaried) */
   DED_80C:        150000,  /* Section 80C cap */
   DED_NPS:        50000,   /* Section 80CCD(1B) NPS */
+  DED_80CCD2_PCT: 0.10,    /* 80CCD(2) employer NPS — 10% of basic+DA */
   DED_80D_NORM:   25000,   /* Medical insurance — self (non-senior) */
   DED_80D_SR:     50000,   /* Medical insurance — self (senior) */
-  DED_80D_PAR:    50000,   /* Medical insurance — parents */
+  DED_80D_PAR:    25000,   /* Medical insurance — parents (non-senior) */
+  DED_80D_PAR_SR: 50000,   /* Medical insurance — parents (senior) */
   DED_HOMELOAN:   200000,  /* Section 24(b) home loan interest */
   REBATE_THRESH_NEW: 1200000, /* 87A rebate threshold — New Regime */
   REBATE_MAX_NEW:    60000,   /* 87A max rebate — New Regime */
@@ -51,13 +53,9 @@ const LIMITS = {
 
 /**
  * Compute tax from a slab table.
- * @param {number} income
- * @param {Array}  slabs  - Array of { upto, rate } objects
- * @returns {number}
  */
 function computeSlabTax(income, slabs) {
-  let tax = 0;
-  let prev = 0;
+  let tax = 0, prev = 0;
   for (const slab of slabs) {
     if (income <= prev) break;
     const top   = slab.upto === Infinity ? income : slab.upto;
@@ -69,10 +67,18 @@ function computeSlabTax(income, slabs) {
 }
 
 /**
+ * Auto-compute HRA exemption (Old Regime Sec 10(13A)).
+ * Exempt = Min of: actual HRA | rent − 10% basic | 50%/40% of basic (metro/non-metro)
+ */
+function computeHRAExemption(basicDA, hraReceived, rentPaid, isMetro) {
+  if (!hraReceived || !rentPaid) return 0;
+  const rentMinusBasic = Math.max(0, rentPaid - basicDA * 0.10);
+  const cityPct        = isMetro ? 0.50 : 0.40;
+  return Math.max(0, Math.min(hraReceived, rentMinusBasic, basicDA * cityPct));
+}
+
+/**
  * Surcharge rate for individuals (% of tax).
- * @param {number} totalIncome
- * @param {string} regime - 'new' | 'old'
- * @returns {number}
  */
 function individualSurchargeRate(totalIncome, regime) {
   if (totalIncome > 50000000) return regime === 'new' ? 25 : 37;
@@ -86,35 +92,54 @@ function individualSurchargeRate(totalIncome, regime) {
  * Full individual income tax computation.
  * @param {Object} inp    - Form inputs
  * @param {string} regime - 'new' | 'old'
- * @returns {Object}
  */
 function computeIndividualTax(inp, regime) {
   const {
     salary, rent, business, stcgEq, ltcgEq, ltcgProp, stcgOther, other,
-    age, c80, nps, d80self, d80par, hra, homeloan, edu80e, otherDed
+    age, c80, nps, d80self, d80par, parSenior, hraReceived, rentPaid, isMetro,
+    homeloan, edu80e, otherDed, npsEmployer, basic, tds
   } = inp;
+
+  const basicDA = basic || salary * 0.40; /* fallback: estimate basic as 40% of salary */
 
   /* Normal income (slab-rated) */
   const normalIncome = salary + rent + business + stcgOther + other;
 
-  /* Deductions */
+  /* ── 80CCD(2): Employer NPS — available in BOTH regimes ──── */
+  const ded80CCD2 = npsEmployer > 0
+    ? Math.min(npsEmployer, basicDA * LIMITS.DED_80CCD2_PCT)
+    : 0;
+
+  /* ── Deductions ─────────────────────────────────────────── */
   let stdDed = 0;
   let itemizedDed = 0;
+  let computedHRA = 0;
 
   if (regime === 'new') {
-    stdDed = (salary > 0 || business > 0) ? Math.min(LIMITS.STD_DED_NEW, salary + business) : 0;
+    /* New Regime: standard deduction on salary/pension only */
+    stdDed = salary > 0 ? Math.min(LIMITS.STD_DED_NEW, salary) : 0;
+    /* 80CCD(2) is the only other deduction in new regime */
+    itemizedDed = ded80CCD2;
+
   } else {
+    /* Old Regime */
     stdDed = salary > 0 ? Math.min(LIMITS.STD_DED_OLD, salary) : 0;
+
+    /* HRA — auto-compute if breakdown provided, else use manual entry */
+    if (hraReceived > 0 && rentPaid > 0 && basicDA > 0) {
+      computedHRA = computeHRAExemption(basicDA, hraReceived, rentPaid, isMetro);
+    }
 
     const ded80C     = Math.min(c80,      LIMITS.DED_80C);
     const dedNPS     = Math.min(nps,      LIMITS.DED_NPS);
     const cap80DSelf = (age === 'senior' || age === 'supersenior') ? LIMITS.DED_80D_SR : LIMITS.DED_80D_NORM;
+    const cap80DPar  = parSenior ? LIMITS.DED_80D_PAR_SR : LIMITS.DED_80D_PAR;
     const ded80DSelf = Math.min(d80self,  cap80DSelf);
-    const ded80DPar  = Math.min(d80par,   LIMITS.DED_80D_PAR);
-    const dedHRA     = Math.min(hra,      normalIncome);
+    const ded80DPar  = Math.min(d80par,   cap80DPar);
     const dedLoan    = Math.min(homeloan, LIMITS.DED_HOMELOAN);
 
-    itemizedDed = ded80C + dedNPS + ded80DSelf + ded80DPar + dedHRA + dedLoan + edu80e + otherDed;
+    itemizedDed = ded80C + dedNPS + ded80DSelf + ded80DPar + computedHRA
+                + dedLoan + edu80e + otherDed + ded80CCD2;
   }
 
   const totalDed      = stdDed + itemizedDed;
@@ -128,32 +153,31 @@ function computeIndividualTax(inp, regime) {
   let normalTax = computeSlabTax(taxableNormal, slabs);
 
   /* Section 87A Rebate */
-  let rebate = 0;
-  let rebateNote = '';
+  let rebate = 0, rebateNote = '';
 
   if (regime === 'new') {
     if (taxableNormal <= LIMITS.REBATE_THRESH_NEW) {
-      rebate = Math.min(normalTax, LIMITS.REBATE_MAX_NEW);
+      rebate    = Math.min(normalTax, LIMITS.REBATE_MAX_NEW);
       normalTax -= rebate;
       if (rebate > 0) rebateNote = 'Rebate u/s 87A — zero tax up to ₹12L income (New Regime)';
     } else {
       /* Marginal relief */
       const excessIncome = taxableNormal - LIMITS.REBATE_THRESH_NEW;
       if (normalTax > excessIncome) {
-        rebate = normalTax - excessIncome;
+        rebate    = normalTax - excessIncome;
         normalTax = excessIncome;
         rebateNote = 'Marginal relief u/s 87A applied';
       }
     }
   } else {
     if (taxableNormal <= LIMITS.REBATE_THRESH_OLD && normalTax > 0) {
-      rebate = Math.min(normalTax, LIMITS.REBATE_MAX_OLD);
+      rebate    = Math.min(normalTax, LIMITS.REBATE_MAX_OLD);
       normalTax -= rebate;
       if (rebate > 0) rebateNote = 'Rebate u/s 87A (max ₹12,500) — income ≤ ₹5L (Old Regime)';
     }
   }
 
-  /* Capital Gains Tax (special rates) */
+  /* Capital Gains Tax */
   const stcgEqTax     = stcgEq  * LIMITS.STCG_111A_RATE;
   const ltcgExempt    = Math.min(ltcgEq, LIMITS.LTCG_EXEMPTION);
   const ltcgEqTaxable = Math.max(0, ltcgEq - LIMITS.LTCG_EXEMPTION);
@@ -166,38 +190,52 @@ function computeIndividualTax(inp, regime) {
   /* Surcharge */
   const totalIncome    = taxableNormal + stcgEq + ltcgEq + ltcgProp + stcgOther;
   const sRate          = individualSurchargeRate(totalIncome, regime);
-  const cgSurchargeRate = Math.min(sRate, 15); /* CG surcharge capped at 15% per CBDT */
+  const cgSurchargeRate = Math.min(sRate, 15);
   const totalSurcharge  = (normalTax * sRate / 100) + (cgTax * cgSurchargeRate / 100);
 
   /* Cess */
   const cess     = (preSurchargeTax + totalSurcharge) * LIMITS.CESS_RATE;
   const totalTax = preSurchargeTax + totalSurcharge + cess;
 
+  /* Net payable after TDS */
+  const tdsAmt        = tds || 0;
+  const netPayable    = totalTax - tdsAmt;
+  const isRefund      = netPayable < 0;
+
+  /* Advance tax (if net payable > ₹10,000) */
+  let advanceTax = null;
+  if (netPayable > 10000) {
+    advanceTax = [
+      { date: '15 Jun 2025', cumPct: 15,  dueAmt: totalTax * 0.15 },
+      { date: '15 Sep 2025', cumPct: 45,  dueAmt: totalTax * 0.30 },
+      { date: '15 Dec 2025', cumPct: 75,  dueAmt: totalTax * 0.30 },
+      { date: '15 Mar 2026', cumPct: 100, dueAmt: totalTax * 0.25 }
+    ];
+  }
+
   /* Summary */
   const grossIncome     = salary + rent + business + stcgEq + ltcgEq + ltcgProp + stcgOther + other;
   const effectiveRate   = grossIncome > 0 ? (totalTax / grossIncome * 100) : 0;
-  const monthlyTakeHome = Math.max(0, salary - totalTax) / 12;
+  const monthlyTakeHome = salary > 0 ? Math.max(0, salary - totalTax) / 12 : 0;
 
   return {
     regime, age, grossIncome, normalIncome,
-    stdDed, itemizedDed, totalDed, taxableNormal,
+    stdDed, ded80CCD2, itemizedDed, totalDed, taxableNormal,
+    computedHRA,
     stcgEq, stcgEqTax,
     ltcgEq, ltcgExempt, ltcgEqTaxable, ltcgEqTax,
     ltcgProp, ltcgPropTax, cgTax, stcgOther,
     normalTaxBeforeRebate: normalTax + rebate,
     normalTax, rebate, rebateNote,
     preSurchargeTax, sRate, totalSurcharge, cess, totalTax,
-    effectiveRate, monthlyTakeHome, totalIncome
+    tdsAmt, netPayable, isRefund,
+    effectiveRate, monthlyTakeHome, totalIncome,
+    advanceTax
   };
 }
 
 /**
  * Corporate / business tax computation.
- * @param {string} entity   - 'pvt' | 'pvt-new' | 'llp' | 'partner' | 'proprietor'
- * @param {number} turnover
- * @param {number} profit
- * @param {string} regime   - 'standard' | '115baa'
- * @returns {Object|null}
  */
 function computeBusinessTax(entity, turnover, profit, regime) {
   if (!profit || profit <= 0) return null;
@@ -205,18 +243,17 @@ function computeBusinessTax(entity, turnover, profit, regime) {
 
   let baseRate;
   if (entity === 'pvt-new') {
-    baseRate = 15;           /* Section 115BAB */
+    baseRate = 15;
   } else if (entity === 'pvt') {
     baseRate = regime === '115baa'
-      ? 22                   /* Section 115BAA */
-      : (turnover > 4000000000 ? 30 : 25); /* Standard: 25% if turnover ≤ ₹400Cr */
+      ? 22
+      : (turnover > 4000000000 ? 30 : 25);
   } else {
-    baseRate = 30;           /* LLP / Partnership */
+    baseRate = 30;
   }
 
   const baseTax = profit * baseRate / 100;
 
-  /* Surcharge */
   let sRate = 0;
   if (entity === 'llp' || entity === 'partner') {
     if (profit > 10000000) sRate = 12;
@@ -231,7 +268,6 @@ function computeBusinessTax(entity, turnover, profit, regime) {
   const pat          = profit - totalTax;
   const effectiveRate = totalTax / profit * 100;
 
-  /* Advance Tax Installments (Section 211 — FY 2025-26) */
   const advanceTax = [
     { date: '15 Jun 2025', cumPct: 15,  dueAmt: totalTax * 0.15 },
     { date: '15 Sep 2025', cumPct: 45,  dueAmt: totalTax * 0.30 },

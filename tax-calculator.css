@@ -511,6 +511,64 @@
 .tc-footer-disc { font-size: 12px; line-height: 1.65; margin-bottom: 10px; opacity: .7; }
 .tc-footer-right p:last-child { font-size: 12px; opacity: .45; }
 
+/* ── TEAL ICON (Employer NPS group) ──────────────────────── */
+.tc-gicon-teal { background: #0d9488; }
+
+/* ── RECOMMENDATION CARD ─────────────────────────────────── */
+.tc-rec-card {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; border-radius: var(--r-lg, 12px);
+  border: 1.5px solid; margin-bottom: 16px;
+}
+.tc-rec-good    { background: #f0fdf4; border-color: #86efac; }
+.tc-rec-switch  { background: #fffbeb; border-color: #fde68a; }
+.tc-rec-neutral { background: var(--off-white, #FAFAF7); border-color: var(--border, #D1FAE5); }
+.tc-rec-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 15px; font-weight: 700;
+}
+.tc-rec-good   .tc-rec-icon { background: #bbf7d0; color: #15803d; }
+.tc-rec-switch .tc-rec-icon { background: #fde68a; color: #92400e; }
+.tc-rec-neutral .tc-rec-icon { background: var(--border, #D1FAE5); color: var(--text-muted); }
+.tc-rec-body { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.tc-rec-body strong { font-size: 13.5px; color: var(--primary, #064E3B); }
+.tc-rec-body span   { font-size: 12.5px; color: var(--text-body, #374151); line-height: 1.5; }
+
+/* ── TDS SECTION IN BREAKDOWN ────────────────────────────── */
+.tc-tds-section {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 2px dashed var(--border-mid, #A7F3D0);
+}
+.tc-brow-refund .tc-brow-val { color: var(--accent, #059669) !important; font-size: 17px; }
+.tc-brow-net    .tc-brow-val { color: var(--gold, #D97706) !important; font-size: 17px; }
+
+/* ── HRA AUTO CALCULATOR BOX ─────────────────────────────── */
+.tc-hra-calc-box {
+  background: #f0fdf4; border-radius: var(--r-lg, 12px);
+  border: 1.5px solid var(--border-mid, #A7F3D0); padding: 16px;
+  margin-bottom: 16px;
+}
+.tc-hra-heading {
+  display: flex; flex-direction: column; gap: 3px;
+  margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 1.5px dashed var(--border-mid, #A7F3D0);
+  font-size: 13px; font-weight: 700; color: var(--primary, #064E3B);
+}
+.tc-hra-formula { font-size: 11px; font-weight: 400; color: var(--text-muted); font-style: italic; }
+
+/* ── PARENTS SENIOR CHECKBOX ─────────────────────────────── */
+.tc-chk-row { margin-top: 8px; }
+.tc-chk-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; color: var(--primary, #064E3B);
+  cursor: pointer; user-select: none;
+}
+.tc-chk {
+  width: 16px; height: 16px; flex-shrink: 0;
+  accent-color: var(--accent, #059669); cursor: pointer;
+}
+
 /* ── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .tc-layout { grid-template-columns: 1fr; }

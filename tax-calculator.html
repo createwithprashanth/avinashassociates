@@ -162,20 +162,28 @@
                   <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-salary" placeholder="0" min="0" inputmode="numeric"></div>
                 </div>
                 <div class="tc-field">
+                  <label class="tc-lbl" for="i-basic">Basic Salary
+                    <span class="tc-hint">Used for HRA &amp; employer NPS calculation. Leave blank to auto-estimate (40% of salary).</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-basic" placeholder="Auto (40% of salary)" min="0" inputmode="numeric"></div>
+                </div>
+              </div>
+              <div class="tc-row2">
+                <div class="tc-field">
                   <label class="tc-lbl" for="i-rent">Rental Income
                     <span class="tc-hint">Net annual rent — 30% std. deduction auto-applied (Old Regime)</span>
                   </label>
                   <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-rent" placeholder="0" min="0" inputmode="numeric"></div>
                 </div>
-              </div>
-              <div class="tc-row2">
                 <div class="tc-field">
                   <label class="tc-lbl" for="i-business">Business / Freelance Profit
                     <span class="tc-hint">Net profit from business, profession or freelancing</span>
                   </label>
                   <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-business" placeholder="0" min="0" inputmode="numeric"></div>
                 </div>
-                <div class="tc-field">
+              </div>
+              <div class="tc-row2">
+                <div class="tc-field tc-field-full">
                   <label class="tc-lbl" for="i-other">Other Sources
                     <span class="tc-hint">Interest income, dividends, winnings, gifts, etc.</span>
                   </label>
@@ -315,18 +323,49 @@
                     <span class="tc-hint">Premium for dependent parents. ₹50K cap if parents are senior citizens.</span>
                   </label>
                   <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-80d-par" placeholder="0" min="0" inputmode="numeric"></div>
+                  <div class="tc-chk-row">
+                    <label class="tc-chk-label" for="i-par-senior">
+                      <input type="checkbox" id="i-par-senior" class="tc-chk">
+                      Parents are senior citizens (60+) — ₹50,000 limit applies
+                    </label>
+                  </div>
                 </div>
               </div>
 
-              <div class="tc-ded-section-title">Salary &amp; Property Deductions</div>
-              <div class="tc-row2">
-                <div class="tc-field">
-                  <label class="tc-lbl" for="i-hra">HRA Exemption
-                    <span class="tc-hint">Enter the actual exempt HRA amount (minimum of actual HRA, 40%/50% of basic, and rent − 10% of basic)</span>
-                  </label>
-                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-hra" placeholder="0" min="0" inputmode="numeric"></div>
+              <div class="tc-ded-section-title">HRA &amp; Property Deductions</div>
+              <div class="tc-hra-calc-box">
+                <div class="tc-hra-heading">
+                  <span>🏠 HRA Exemption — Auto Computed (Sec 10(13A))</span>
+                  <span class="tc-hra-formula">Exempt = Min(HRA received, Rent − 10% basic, 50%/40% of basic for metro/non-metro)</span>
                 </div>
-                <div class="tc-field">
+                <div class="tc-row2">
+                  <div class="tc-field">
+                    <label class="tc-lbl" for="i-hra-received">HRA Received from Employer
+                      <span class="tc-hint">Annual HRA component shown in your salary slip / Form 16</span>
+                    </label>
+                    <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-hra-received" placeholder="0" min="0" inputmode="numeric"></div>
+                  </div>
+                  <div class="tc-field">
+                    <label class="tc-lbl" for="i-rent-paid">Annual Rent Paid
+                      <span class="tc-hint">Total rent paid during the year (must exceed 10% of basic for any exemption)</span>
+                    </label>
+                    <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-rent-paid" placeholder="0" min="0" inputmode="numeric"></div>
+                  </div>
+                </div>
+                <div class="tc-row2" style="margin-bottom:0">
+                  <div class="tc-field tc-field-full">
+                    <label class="tc-lbl" for="i-city-type">City Type
+                      <span class="tc-hint">Metro cities (Mumbai, Delhi, Chennai, Kolkata) get 50% of basic; all other cities get 40%</span>
+                    </label>
+                    <select class="tc-sel" id="i-city-type">
+                      <option value="non-metro">Non-Metro City — 40% of Basic</option>
+                      <option value="metro">Metro City (Mumbai, Delhi, Chennai, Kolkata) — 50% of Basic</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="tc-row2" style="margin-bottom:0">
+                <div class="tc-field tc-field-full">
                   <label class="tc-lbl" for="i-homeloan">Home Loan Interest — Sec 24(b)
                     <span class="tc-cap-tag">Max ₹2,00,000</span>
                     <span class="tc-hint">Interest paid on home loan for self-occupied property</span>
@@ -348,6 +387,34 @@
                     <span class="tc-hint">Donations u/s 80G, Leave Travel Allowance, professional tax paid, etc.</span>
                   </label>
                   <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-other-ded" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Group 4: Employer NPS & TDS (Both Regimes) ── -->
+          <div class="tc-group" id="tc-nps-grp">
+            <div class="tc-ghd">
+              <span class="tc-gicon tc-gicon-teal">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </span>
+              <span class="tc-gtitle">Employer NPS &amp; TDS</span>
+              <span class="tc-gnote">Both Regimes</span>
+            </div>
+            <div class="tc-gbody">
+              <div class="tc-row2">
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-80ccd2">Employer NPS — 80CCD(2)
+                    <span class="tc-cap-tag">Max 10% of Basic+DA</span>
+                    <span class="tc-hint">NPS contribution made by your employer on your behalf. Deductible in both New &amp; Old Regime.</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-80ccd2" placeholder="0" min="0" inputmode="numeric"></div>
+                </div>
+                <div class="tc-field">
+                  <label class="tc-lbl" for="i-tds">TDS Deducted by Employer
+                    <span class="tc-hint">Total TDS from salary per Form 16 / Part A. Computes net tax payable or refund due.</span>
+                  </label>
+                  <div class="tc-ibox"><span class="tc-pre">₹</span><input type="number" class="tc-num" id="i-tds" placeholder="0" min="0" inputmode="numeric"></div>
                 </div>
               </div>
             </div>
@@ -410,12 +477,18 @@
                 </div>
               </div>
 
+              <!-- Recommendation card -->
+              <div id="ind-recommendation"></div>
+
               <!-- Breakdown -->
               <div class="tc-section-title">Tax Breakdown</div>
               <div class="tc-breakdown" id="ind-breakdown"></div>
 
               <!-- Regime comparison -->
-              <div class="tc-comp-section" id="ind-comparison"></div>
+              <div id="ind-comparison"></div>
+
+              <!-- Advance Tax Schedule -->
+              <div id="ind-adv-section" style="display:none"></div>
 
               <!-- Disclaimer + CTA -->
               <div class="tc-result-footer">
