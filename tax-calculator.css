@@ -37,7 +37,7 @@
   align-items: start;
 }
 .tc-form-col { display: flex; flex-direction: column; gap: 20px; }
-.tc-result-col { position: sticky; top: 80px; }
+.tc-result-col { position: sticky; top: 140px; }
 
 /* ── HEADER ────────────────────────────────────────────────── */
 .tc-header {
@@ -126,13 +126,13 @@
 .tc-hero-wave svg { width: 100%; display: block; }
 
 /* ── MAIN ──────────────────────────────────────────────────── */
-.tc-main { flex: 1; padding-top: 72px; padding-bottom: 60px; }
+.tc-main { flex: 1; padding-top: 124px; padding-bottom: 60px; } /* 72px navbar + 52px tabs bar */
 
 /* Tabs bar */
 .tc-tabs-bar {
   background: #fff;
   border-bottom: 2px solid var(--border, #D1FAE5);
-  position: sticky; top: 72px; z-index: 99;
+  position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
   box-shadow: 0 2px 12px rgba(6,78,59,.06);
 }
 .tc-tabs-inner {
