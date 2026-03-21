@@ -16,11 +16,7 @@
   /* Position overlay to start exactly at the navbar bottom */
   function updateOverlayTop() {
     const navbar = document.querySelector('.navbar');
-    const topBar = document.querySelector('.top-bar');
-    const navH   = navbar ? navbar.getBoundingClientRect().height : 72;
-    const tbH    = topBar && !topBar.classList.contains('hidden')
-                    ? topBar.getBoundingClientRect().height : 0;
-    overlay.style.top = (tbH + navH) + 'px';
+    overlay.style.top = navbar ? navbar.getBoundingClientRect().bottom + 'px' : '72px';
   }
 
   function openOverlay() {
