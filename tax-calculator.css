@@ -123,8 +123,13 @@
   box-shadow: 0 2px 12px rgba(6,78,59,.06);
 }
 .tc-embed .tc-header { display: none; }
-.tc-embed .tc-tabs-bar { top: 0; }
 .tc-embed .tc-footer { display: none; }
+.tc-embed .tc-tabs-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+}
+.tc-embed .tc-main { padding-top: 58px; } /* compensate for fixed tabs bar */
 .tc-tabs-inner {
   max-width: 1300px; margin: 0 auto; padding: 0 32px;
   display: flex; gap: 0;
