@@ -596,20 +596,6 @@
   <script src="js/utils.js"></script>
   <script src="js/tax-engine.js"></script>
   <script src="js/tax-ui.js"></script>
-  <script>
-    /* Embed mode — hide inner header/footer, wire back button */
-    (function() {
-      if (new URLSearchParams(window.location.search).get('embed') !== '1') return;
-      document.body.classList.add('tc-embed');
-      /* "Main Website" back button → close overlay via postMessage */
-      document.querySelectorAll('a[href="index.html"], a[href="index.html#contact"]').forEach(function(a) {
-        a.addEventListener('click', function(e) {
-          e.preventDefault();
-          window.parent.postMessage({ type: 'closeTaxCalc' }, '*');
-        });
-      });
-    })();
-  </script>
 
 </body>
 </html>
