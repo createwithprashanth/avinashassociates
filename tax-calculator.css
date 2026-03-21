@@ -6,6 +6,19 @@
 /* ── Base ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ── Navbar overrides — always solid on this page ─────────── */
+.tc-page .top-bar { display: none; }
+.tc-page .navbar {
+  background: rgba(255,255,255,.97) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(6,78,59,.06), var(--shadow-md);
+  top: 0 !important;
+}
+.tc-page .nav-firm-name { color: var(--primary) !important; }
+.tc-page .nav-firm-type { color: var(--accent)  !important; }
+.tc-page .nav-link      { color: var(--text-body) !important; }
+.tc-page .ham-line      { background: var(--text-heading) !important; }
+
 .tc-page {
   font-family: 'Inter', sans-serif;
   background: var(--off-white, #FAFAF7);
@@ -113,13 +126,13 @@
 .tc-hero-wave svg { width: 100%; display: block; }
 
 /* ── MAIN ──────────────────────────────────────────────────── */
-.tc-main { flex: 1; padding-top: 108px; padding-bottom: 60px; }
+.tc-main { flex: 1; padding-top: 72px; padding-bottom: 60px; }
 
 /* Tabs bar */
 .tc-tabs-bar {
   background: #fff;
   border-bottom: 2px solid var(--border, #D1FAE5);
-  position: sticky; top: 60px; z-index: 99;
+  position: sticky; top: 72px; z-index: 99;
   box-shadow: 0 2px 12px rgba(6,78,59,.06);
 }
 .tc-tabs-inner {
