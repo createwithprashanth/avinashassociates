@@ -24,8 +24,6 @@
 
   let savedScrollY = 0;
 
-  const navbar = document.getElementById('navbar');
-
   function openOverlay() {
     if (!loaded) {
       frame.src = 'tax-calculator.html?embed=1';
@@ -38,8 +36,7 @@
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    /* Keep navbar solid — it goes transparent at scrollY=0 otherwise */
-    if (navbar) navbar.classList.add('scrolled');
+    document.body.classList.add('tco-open');
     setTimeout(() => closeBtn && closeBtn.focus(), 60);
   }
 
@@ -49,8 +46,7 @@
     document.body.style.overflow = '';
     /* Restore previous scroll position */
     window.scrollTo({ top: savedScrollY, behavior: 'instant' });
-    /* Let nav.js re-evaluate scroll state naturally */
-    if (navbar && savedScrollY <= 80) navbar.classList.remove('scrolled');
+    document.body.classList.remove('tco-open');
   }
 
   /* Open when any link pointing to tax-calculator.html is clicked */

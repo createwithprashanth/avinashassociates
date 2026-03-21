@@ -18,6 +18,19 @@
   transform: translateY(0);
 }
 
+/* Force navbar into its solid "scrolled" state while overlay is open.
+   CSS specificity ensures this overrides the JS class toggle. */
+body.tco-open .navbar {
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(6,78,59,.06), var(--shadow-md);
+  top: 0;
+}
+body.tco-open .navbar .nav-firm-name { color: var(--primary); }
+body.tco-open .navbar .nav-firm-type { color: var(--accent); }
+body.tco-open .navbar .nav-link      { color: var(--text-body); }
+body.tco-open .navbar .ham-line      { background: var(--text-heading); }
+
 /* The iframe fills full overlay height, starts below the fixed navbar */
 .tco-frame {
   flex: 1;
