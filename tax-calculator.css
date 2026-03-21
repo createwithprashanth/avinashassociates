@@ -29,8 +29,8 @@
 
 /* ── Layout container ─────────────────────────────────────── */
 .tc-layout {
-  max-width: 1300px; width: 100%;
-  margin: 0 auto; padding: 0 32px;
+  max-width: 1200px; width: 100%;
+  margin: 0 auto; padding: 0 48px;
   display: grid;
   grid-template-columns: 1fr 440px;
   gap: 28px;
@@ -47,8 +47,8 @@
   box-shadow: 0 2px 20px rgba(2,44,34,.3);
 }
 .tc-header-inner {
-  max-width: 1300px; width: 100%; margin: 0 auto;
-  padding: 0 32px; height: 60px;
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  padding: 0 48px; height: 60px;
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
 }
 .tc-logo {
@@ -136,7 +136,7 @@
   height: 64px;
 }
 .tc-page-intro-inner {
-  max-width: 1300px; margin: 0 auto; padding: 0 32px;
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
   height: 100%;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
@@ -162,7 +162,7 @@
   box-shadow: 0 2px 12px rgba(6,78,59,.06);
 }
 .tc-tabs-inner {
-  max-width: 1300px; margin: 0 auto; padding: 0 32px;
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
   display: flex; gap: 0;
 }
 .tc-mtab {
@@ -499,7 +499,7 @@
   padding: 32px 0;
 }
 .tc-footer-inner {
-  max-width: 1300px; margin: 0 auto; padding: 0 32px;
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
   display: flex; gap: 40px; align-items: flex-start;
 }
 .tc-footer-logo {
