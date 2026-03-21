@@ -37,7 +37,7 @@
   align-items: start;
 }
 .tc-form-col { display: flex; flex-direction: column; gap: 20px; }
-.tc-result-col { position: sticky; top: 200px; }
+.tc-result-col { position: sticky; top: 204px; }
 
 /* ── HEADER ────────────────────────────────────────────────── */
 .tc-header {
@@ -126,18 +126,19 @@
 .tc-hero-wave svg { width: 100%; display: block; }
 
 /* ── MAIN ──────────────────────────────────────────────────── */
-.tc-main { flex: 1; padding-top: 72px; padding-bottom: 60px; }
+.tc-main { flex: 1; padding-top: 192px; padding-bottom: 60px; } /* 72 navbar + 64 intro + 52 tabs + 4 gap */
 
-/* Page intro — sticks just below navbar */
+/* Page intro — fixed just below navbar */
 .tc-page-intro {
   background: linear-gradient(135deg, var(--primary-dark, #022C22) 0%, var(--primary, #064E3B) 100%);
   border-bottom: 1px solid rgba(255,255,255,.08);
-  position: sticky; top: 72px; z-index: 98;
+  position: fixed; top: 72px; left: 0; right: 0; z-index: 98;
+  height: 64px;
 }
 .tc-page-intro-inner {
-  max-width: 1300px; margin: 0 auto; padding: 14px 32px;
+  max-width: 1300px; margin: 0 auto; padding: 0 32px;
+  height: 100%;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  flex-wrap: wrap;
 }
 .tc-page-title {
   font-family: 'Raleway', sans-serif; font-size: 20px; font-weight: 800;
@@ -153,11 +154,11 @@
   padding: 5px 12px; border-radius: var(--r-full, 9999px);
 }
 
-/* Tabs bar — sticks just below page intro (~72px navbar + ~68px intro) */
+/* Tabs bar — fixed just below page intro (72px navbar + 64px intro) */
 .tc-tabs-bar {
   background: #fff;
   border-bottom: 2px solid var(--border, #D1FAE5);
-  position: sticky; top: 140px; z-index: 97;
+  position: fixed; top: 136px; left: 0; right: 0; z-index: 97;
   box-shadow: 0 2px 12px rgba(6,78,59,.06);
 }
 .tc-tabs-inner {
