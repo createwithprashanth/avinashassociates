@@ -576,22 +576,27 @@
   .tc-rcard { max-width: 600px; margin: 0 auto; }
 }
 @media (max-width: 768px) {
+  /* Hide the page intro strip on mobile — navbar alone is enough */
+  .tc-page-intro { display: none; }
+  /* Tabs bar sits directly below the 64px mobile navbar */
+  .tc-tabs-bar { top: 64px; }
+  /* 64px navbar + ~52px tabs + 4px gap */
+  .tc-main { padding-top: 124px; }
+  .tc-result-col { top: 128px; }
+
   .tc-layout { padding: 0 16px; }
   .tc-row2 { grid-template-columns: 1fr; }
   .tc-regime-pair { grid-template-columns: 1fr; }
   .tc-regime-cards-grid { grid-template-columns: 1fr; }
   .tc-adv-grid { grid-template-columns: 1fr; }
   .tc-header-inner { padding: 0 16px; }
-  .tc-hdr-link:not(.tc-hdr-wa):not(.tc-back-btn) { display: none; }
   .tc-hero { padding: 32px 16px 0; }
   .tc-hero-title { font-size: 26px; }
   .tc-gauge-section { flex-direction: column; text-align: center; }
   .tc-gauge-meta { align-items: center; }
   .tc-tabs-inner { padding: 0 16px; }
   .tc-footer-inner { flex-direction: column; gap: 20px; padding: 0 16px; }
-  .tc-page-intro-inner { padding: 16px; }
-  .tc-page-title { font-size: 18px; }
-  .tc-page-intro-right { display: none; }
+  .tc-hra-calc-box .tc-row2 { margin-bottom: 12px; }
 }
 @media (max-width: 480px) {
   .tc-mtab { padding: 13px 14px; font-size: 13px; }
