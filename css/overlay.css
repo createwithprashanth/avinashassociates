@@ -5,8 +5,9 @@
 
 .tco-overlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;  /* full screen — navbar sits above via z-index */
-  z-index: 900;
+  top: 108px; /* below navbar — updated precisely by JS */
+  left: 0; right: 0; bottom: 0;
+  z-index: 1001; /* above navbar (1000) so no hacks needed */
   display: flex;
   flex-direction: column;
   background: var(--off-white, #FAFAF7);
@@ -21,24 +22,11 @@
 /* Lock background scroll while overlay is open */
 body.tco-open { overflow: hidden; }
 
-/* Force navbar into its solid "scrolled" state while overlay is open */
-body.tco-open .navbar {
-  background: rgba(255,255,255,.97);
-  backdrop-filter: blur(24px) saturate(180%);
-  box-shadow: 0 1px 0 rgba(6,78,59,.06), var(--shadow-md);
-  top: 0;
-}
-body.tco-open .navbar .nav-firm-name { color: var(--primary); }
-body.tco-open .navbar .nav-firm-type { color: var(--accent); }
-body.tco-open .navbar .nav-link      { color: var(--text-body); }
-body.tco-open .navbar .ham-line      { background: var(--text-heading); }
-
-/* The iframe fills full overlay height, starts below the fixed navbar */
+/* iframe fills the overlay completely — no margin needed */
 .tco-frame {
   flex: 1;
   border: none;
   width: 100%;
   display: block;
   background: #FAFAF7;
-  /* margin-top set dynamically by JS to match actual navbar height */
 }

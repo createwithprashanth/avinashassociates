@@ -13,13 +13,14 @@
 
   let loaded = false;
 
-  /* Push iframe below the fixed navbar */
-  function updateFrameTop() {
+  /* Position overlay to start exactly at the navbar bottom */
+  function updateOverlayTop() {
     const navbar = document.querySelector('.navbar');
     const topBar = document.querySelector('.top-bar');
-    const navH   = navbar  ? navbar.getBoundingClientRect().height  : 72;
-    const tbH    = topBar  ? topBar.getBoundingClientRect().height  : 0;
-    frame.style.marginTop = (tbH + navH) + 'px';
+    const navH   = navbar ? navbar.getBoundingClientRect().height : 72;
+    const tbH    = topBar && !topBar.classList.contains('hidden')
+                    ? topBar.getBoundingClientRect().height : 0;
+    overlay.style.top = (tbH + navH) + 'px';
   }
 
   function openOverlay() {
@@ -27,10 +28,10 @@
       frame.src = 'tax-calculator.html?embed=1';
       loaded = true;
     }
-    updateFrameTop();
+    updateOverlayTop();
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('tco-open');   /* CSS handles scroll-lock + navbar color */
+    document.body.classList.add('tco-open');
     setTimeout(() => closeBtn && closeBtn.focus(), 60);
   }
 
