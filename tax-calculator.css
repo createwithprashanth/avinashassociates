@@ -37,7 +37,7 @@
   align-items: start;
 }
 .tc-form-col { display: flex; flex-direction: column; gap: 20px; }
-.tc-result-col { position: sticky; top: 132px; }
+.tc-result-col { position: sticky; top: 200px; }
 
 /* ── HEADER ────────────────────────────────────────────────── */
 .tc-header {
@@ -128,22 +128,23 @@
 /* ── MAIN ──────────────────────────────────────────────────── */
 .tc-main { flex: 1; padding-top: 72px; padding-bottom: 60px; }
 
-/* Page intro */
+/* Page intro — sticks just below navbar */
 .tc-page-intro {
   background: linear-gradient(135deg, var(--primary-dark, #022C22) 0%, var(--primary, #064E3B) 100%);
   border-bottom: 1px solid rgba(255,255,255,.08);
+  position: sticky; top: 72px; z-index: 98;
 }
 .tc-page-intro-inner {
-  max-width: 1300px; margin: 0 auto; padding: 20px 32px;
+  max-width: 1300px; margin: 0 auto; padding: 14px 32px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   flex-wrap: wrap;
 }
 .tc-page-title {
-  font-family: 'Raleway', sans-serif; font-size: 22px; font-weight: 800;
-  color: #fff; margin-bottom: 4px; line-height: 1.2;
+  font-family: 'Raleway', sans-serif; font-size: 20px; font-weight: 800;
+  color: #fff; margin-bottom: 3px; line-height: 1.2;
 }
 .tc-page-sub {
-  font-size: 12.5px; color: rgba(255,255,255,.6); font-weight: 500;
+  font-size: 12px; color: rgba(255,255,255,.6); font-weight: 500;
 }
 .tc-page-intro-right { display: flex; gap: 8px; flex-wrap: wrap; flex-shrink: 0; }
 .tc-pi-badge {
@@ -152,11 +153,11 @@
   padding: 5px 12px; border-radius: var(--r-full, 9999px);
 }
 
-/* Tabs bar */
+/* Tabs bar — sticks just below page intro (~72px navbar + ~68px intro) */
 .tc-tabs-bar {
   background: #fff;
   border-bottom: 2px solid var(--border, #D1FAE5);
-  position: sticky; top: 72px; z-index: 99;
+  position: sticky; top: 140px; z-index: 97;
   box-shadow: 0 2px 12px rgba(6,78,59,.06);
 }
 .tc-tabs-inner {
