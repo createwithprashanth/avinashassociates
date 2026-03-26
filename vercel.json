@@ -4,6 +4,17 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/tax-calculator.html",
+      "destination": "/tax-calculator",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/tax-calculator",
+      "destination": "/tax-calculator.html"
     }
   ]
 }
