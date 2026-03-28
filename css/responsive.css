@@ -46,7 +46,7 @@
   .slg-illus { width: 100px; height: 100px; }
   .slg-illus svg { width: 100px; height: 100px; }
   .stats-strip { padding: 52px 20px; }
-  .stats-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .stats-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .stats-vdivider { display: none; }
   .stat-num-wrap { font-size: 44px; }
   .stat-suf-val { font-size: 24px; }
