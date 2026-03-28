@@ -19,53 +19,6 @@
   box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
 }
 
-/* ── Custom Cursor ────────────────────────── */
-#cursor-dot,
-#cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  will-change: transform;
-  border-radius: 50%;
-}
-#cursor-dot {
-  width: 7px; height: 7px;
-  background: #10B981;
-  margin: -3.5px 0 0 -3.5px;
-  transition: opacity 0.3s ease;
-}
-#cursor-ring {
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(16, 185, 129, 0.55);
-  background: transparent;
-  margin: -18px 0 0 -18px;
-  transition:
-    width 0.25s ease,
-    height 0.25s ease,
-    margin 0.25s ease,
-    background 0.25s ease,
-    border-color 0.25s ease,
-    opacity 0.3s ease;
-}
-#cursor-ring.is-hovered {
-  width: 54px; height: 54px;
-  margin: -27px 0 0 -27px;
-  background: rgba(16, 185, 129, 0.07);
-  border-color: rgba(16, 185, 129, 0.8);
-}
-#cursor-ring.is-clicking {
-  width: 26px; height: 26px;
-  margin: -13px 0 0 -13px;
-  background: rgba(16, 185, 129, 0.18);
-  border-color: rgba(16, 185, 129, 0.9);
-}
-
-/* Hide cursor UI on touch / small screens */
-@media (pointer: coarse), (max-width: 768px) {
-  #cursor-dot, #cursor-ring { display: none !important; }
-}
-
 /* ── Hero Particle Canvas ─────────────────── */
 #hero-canvas {
   position: absolute;

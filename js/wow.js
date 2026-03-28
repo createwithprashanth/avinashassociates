@@ -21,49 +21,6 @@
   }
 
   /* ─────────────────────────────────────────
-     2. CUSTOM CURSOR (desktop / mouse only)
-  ───────────────────────────────────────── */
-  const isTouch = () => window.matchMedia('(pointer: coarse)').matches;
-  if (!isTouch()) {
-    const dot  = document.getElementById('cursor-dot');
-    const ring = document.getElementById('cursor-ring');
-
-    if (dot && ring) {
-      let mx = -300, my = -300;
-      let rx = -300, ry = -300;
-      const lerp = (a, b, t) => a + (b - a) * t;
-
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY;
-        dot.style.transform = `translate(${mx}px, ${my}px)`;
-      });
-
-      const trackRing = () => {
-        rx = lerp(rx, mx, 0.11);
-        ry = lerp(ry, my, 0.11);
-        ring.style.transform = `translate(${rx}px, ${ry}px)`;
-        requestAnimationFrame(trackRing);
-      };
-      trackRing();
-
-      // Hover expansion on interactive elements
-      const interactiveEls = 'a, button, .svc-card, .team-card, .faq-q, label, input, textarea, select';
-      document.querySelectorAll(interactiveEls).forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('is-hovered'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('is-hovered'));
-      });
-
-      // Click pulse
-      document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
-      document.addEventListener('mouseup',   () => ring.classList.remove('is-clicking'));
-
-      // Fade when leaving / entering window
-      document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
-      document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
-    }
-  }
-
-  /* ─────────────────────────────────────────
      3. 3D CARD TILT
   ───────────────────────────────────────── */
   document.querySelectorAll('.svc-card, .team-card').forEach(card => {
