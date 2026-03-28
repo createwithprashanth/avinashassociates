@@ -77,15 +77,7 @@
   opacity: 0.55;
 }
 
-/* Ensure hero content sits above canvas */
-.hero-container,
-.hero-bg,
-.hero-overlay,
-.hero-dots,
-.hero-blob {
-  position: relative;
-  z-index: 2;
-}
+/* Canvas sits behind all hero content — it's first in DOM so no z-index fighting needed */
 
 /* ── 3D Tilt — smooth reset ───────────────── */
 .svc-card,
