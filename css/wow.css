@@ -1,0 +1,169 @@
+/* ═══════════════════════════════════════════
+   WOW.CSS — Premium visual effects layer
+   Scroll progress · Cursor · Particles · Tilt
+   ═══════════════════════════════════════════ */
+
+/* ── Scroll Progress Bar ──────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #059669, #34D399, #10B981, #34D399);
+  background-size: 300% auto;
+  animation: gradientShift 3s linear infinite;
+  z-index: 10001;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.08s linear;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+/* ── Custom Cursor ────────────────────────── */
+#cursor-dot,
+#cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  border-radius: 50%;
+}
+#cursor-dot {
+  width: 7px; height: 7px;
+  background: #10B981;
+  margin: -3.5px 0 0 -3.5px;
+  transition: opacity 0.3s ease;
+}
+#cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(16, 185, 129, 0.55);
+  background: transparent;
+  margin: -18px 0 0 -18px;
+  transition:
+    width 0.25s ease,
+    height 0.25s ease,
+    margin 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    opacity 0.3s ease;
+}
+#cursor-ring.is-hovered {
+  width: 54px; height: 54px;
+  margin: -27px 0 0 -27px;
+  background: rgba(16, 185, 129, 0.07);
+  border-color: rgba(16, 185, 129, 0.8);
+}
+#cursor-ring.is-clicking {
+  width: 26px; height: 26px;
+  margin: -13px 0 0 -13px;
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.9);
+}
+
+/* Hide cursor UI on touch / small screens */
+@media (pointer: coarse), (max-width: 768px) {
+  #cursor-dot, #cursor-ring { display: none !important; }
+}
+
+/* ── Hero Particle Canvas ─────────────────── */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+}
+
+/* Ensure hero content sits above canvas */
+.hero-container,
+.hero-bg,
+.hero-overlay,
+.hero-dots,
+.hero-blob {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── 3D Tilt — smooth reset ───────────────── */
+.svc-card,
+.team-card {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.4s ease !important;
+}
+.svc-card.is-tilting,
+.team-card.is-tilting {
+  transition: transform 0.08s linear,
+              box-shadow 0.08s linear !important;
+}
+
+/* ── Gradient animated eyebrow text ──────── */
+.eyebrow {
+  background: linear-gradient(90deg, #059669 0%, #34D399 45%, #10B981 70%, #059669 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s linear infinite;
+}
+
+/* ── Glowing highlight span in hero ──────── */
+.hero-heading .highlight {
+  background: linear-gradient(90deg, #34D399, #10B981, #6EE7B7, #10B981);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3.5s linear infinite;
+  display: inline-block;
+}
+
+/* ── Section heading accent word ─────────── */
+.sec-heading em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glassy shimmer on stat cards ────────── */
+.stat-item {
+  position: relative;
+  overflow: hidden;
+}
+.stat-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%);
+  background-size: 200% auto;
+  animation: shimmer 3.5s linear infinite;
+  pointer-events: none;
+}
+
+/* ── Floating CTA card pulse ring ─────────── */
+.float-wa-btn {
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  animation: waPulse 2.2s ease-out infinite;
+}
+@keyframes waPulse {
+  0%   { box-shadow: 0 0 0 0   rgba(37, 211, 102, 0.55); }
+  70%  { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);   }
+  100% { box-shadow: 0 0 0 0   rgba(37, 211, 102, 0);    }
+}
+
+/* ── Service card inner glow on hover ─────── */
+.svc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.08) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.svc-card:hover::before { opacity: 1; }

@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/wow.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -183,6 +184,11 @@
   </script>
 </head>
 <body>
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <!-- Custom cursor (desktop only, hidden on touch) -->
+  <div id="cursor-dot"  aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
 
   <!-- Skip to main -->
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -268,6 +274,7 @@
 
     <!-- ===== HERO SECTION ===== -->
     <section id="home" class="hero-section">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-bg" style="background-image:url('images/hero-bg.jpg')"></div>
       <div class="hero-overlay"></div>
       <div class="hero-dots"></div>
@@ -1969,5 +1976,17 @@
   <script src="js/calculator.js" defer></script>
   <script src="js/faq.js" defer></script>
   <script src="js/form.js" defer></script>
+  <script src="js/wow.js" defer></script>
+  <script>
+    // Service card spotlight: track mouse position as CSS variable
+    document.addEventListener('mousemove', function(e) {
+      var card = e.target.closest('.svc-card');
+      if (card) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        card.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100) + '%');
+      }
+    });
+  </script>
 </body>
 </html>
