@@ -290,7 +290,7 @@
 .about-img-col { position: relative; }
 .about-img-wrapper { position: relative; display: inline-block; width: 100%; overflow: hidden; border-radius: var(--r-xl); }
 .about-img {
-  width: 100%; aspect-ratio: 4/5; object-fit: cover;
+  width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: top center;
   border-radius: var(--r-xl); box-shadow: var(--shadow-xl);
   background: linear-gradient(135deg, var(--light-bg), var(--border));
   transition: transform .65s cubic-bezier(.4,0,.2,1);
