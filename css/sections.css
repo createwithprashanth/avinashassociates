@@ -288,15 +288,58 @@
 }
 
 .about-img-col { position: relative; padding: 0 0 44px 0; }
-.about-img-wrapper { position: relative; width: 100%; overflow: hidden; border-radius: var(--r-xl); }
+.about-img-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  animation: aboutGlow 4s ease-in-out infinite;
+}
+@keyframes aboutGlow {
+  0%, 100% {
+    box-shadow: 0 24px 64px rgba(2,44,34,.22),
+                0 0 0 3px rgba(217,119,6,.25),
+                0 0 32px rgba(217,119,6,.18);
+  }
+  50% {
+    box-shadow: 0 24px 64px rgba(2,44,34,.3),
+                0 0 0 3px rgba(16,185,129,.3),
+                0 0 32px rgba(16,185,129,.18);
+  }
+}
 .about-img {
   width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: top center;
-  border-radius: var(--r-xl); box-shadow: var(--shadow-xl);
+  border-radius: var(--r-xl);
   background: linear-gradient(135deg, var(--light-bg), var(--border));
   transition: transform .65s cubic-bezier(.4,0,.2,1);
   display: block;
 }
 .about-img-wrapper:hover .about-img { transform: scale(1.04); }
+
+/* Name overlay */
+.about-name-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 60px 22px 22px;
+  background: linear-gradient(to top, rgba(2,44,34,.9) 0%, rgba(2,44,34,.3) 60%, transparent 100%);
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+}
+.about-name-title {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.about-name-role {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,.72);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
 .about-exp-badge {
   position: absolute; bottom: 8px; right: 0;
   background: var(--grad-green); color: white;
