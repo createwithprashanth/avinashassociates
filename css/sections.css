@@ -790,7 +790,7 @@
   inset: 0;
   /* Strong uniform dark layer so the bright backdrop is fully tamed */
   background:
-    linear-gradient(135deg, rgba(1,18,12,.88) 0%, rgba(2,44,34,.72) 50%, rgba(1,18,12,.85) 100%);
+    linear-gradient(135deg, rgba(1,18,12,.62) 0%, rgba(2,44,34,.45) 50%, rgba(1,18,12,.58) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
