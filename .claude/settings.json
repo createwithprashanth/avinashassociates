@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"from PIL import Image; img = Image.open\\(''/Users/prashanththipparthi/Desktop/AvinashAssociates/images/ca-india-logo.png''\\); img.save\\(''/Users/prashanththipparthi/Desktop/AvinashAssociates/images/ca-india-logo.png'', ''PNG''\\); print\\(''Done'', img.size\\)\")",
+      "Bash(python3 -c \":*)",
+      "Bash(curl -L \"https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1000&q=80&fit=crop&crop=faces,center\" -o /Users/prashanththipparthi/Desktop/AvinashAssociates/images/about.jpg)",
+      "WebFetch(domain:undraw.co)"
+    ]
+  }
+}
