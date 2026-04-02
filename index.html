@@ -2180,15 +2180,17 @@
 
   <script>
     (function() {
-      var key = 'hj2025_shown';
-      if (sessionStorage.getItem(key)) {
-        document.getElementById('hj-overlay').classList.add('hj-hide');
+      var today = new Date();
+      var isHJ = (today.getMonth() === 3 && today.getDate() === 2); // April 2
+      if (!isHJ) {
+        var el = document.getElementById('hj-overlay');
+        el.classList.add('hj-hide');
+        el.style.display = 'none';
       }
     })();
     function closeHJPopup() {
       var el = document.getElementById('hj-overlay');
       el.classList.add('hj-hide');
-      sessionStorage.setItem('hj2025_shown', '1');
       setTimeout(function(){ el.style.display = 'none'; }, 450);
     }
   </script>
