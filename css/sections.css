@@ -910,6 +910,88 @@
   .team-group-cta { font-size: 13px; padding: 9px 18px; }
 }
 
+/* ── ACHIEVEMENTS ────────────────────────────────────────── */
+.achieve-section {
+  background: var(--primary);
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+.achieve-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.achieve-section .section-hdr { margin-bottom: 56px; }
+.achieve-section .sec-heading { color: #fff; }
+.achieve-section .section-sub { color: rgba(255,255,255,.55); }
+.achieve-section .eyebrow {
+  background: linear-gradient(90deg, #D4A843, #FBBF24, #D4A843);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s linear infinite;
+}
+
+.achieve-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+.achieve-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r-xl);
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: background .3s ease, border-color .3s ease, transform .3s ease;
+}
+.achieve-card:hover {
+  background: rgba(255,255,255,.09);
+  border-color: rgba(212,168,67,.4);
+  transform: translateY(-4px);
+}
+.achieve-stat {
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #D4A843;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.achieve-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+.achieve-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,.7);
+  line-height: 1.65;
+  margin: 6px 0 0;
+}
+
+@media (max-width: 1200px) {
+  .achieve-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 900px) {
+  .achieve-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+}
+@media (max-width: 600px) {
+  .achieve-section { padding: 64px 0; }
+  .achieve-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .achieve-stat { font-size: 26px; }
+  .achieve-card { padding: 20px 16px; }
+}
+
 /* ── HERO TRUST STRIP ───────────────────────────────────── */
 .hero-trust-strip {
   display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
