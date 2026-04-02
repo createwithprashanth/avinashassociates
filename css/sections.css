@@ -529,8 +529,8 @@
 
 .testi-grid {
   display: grid;
-  grid-template-columns: 1fr 1.12fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
   align-items: start;
   margin-top: 56px;
 }
